@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shuo Liang</title>
-<meta name="description" content="Shuo Liang (梁朔) — undergraduate at Xidian University, remote research intern at NUS HPC-AI Lab. I work on telling real video from AI-generated video.">
+<meta name="description" content="Shuo Liang (梁朔) — undergraduate at Xidian University, research intern at NUS HPC-AI Lab. I work on world models and on measuring how well generated video matches the real world.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +45,6 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
 
 .head{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.6rem}
 
-/* 换成 <img class="avatar" src="images/avatar.png" alt="Shuo Liang"> */
 .avatar{
   width:104px;height:104px;flex:none;border-radius:50%;
   background:#EAEAE4;border:1px solid var(--rule);
@@ -57,13 +56,12 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
   margin:0;line-height:1.15;
 }
 .head h1 .cn{font-weight:300;color:var(--muted);font-size:1.35rem;margin-left:.5rem;vertical-align:.1em}
-.head .alt{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.04em;margin:.3rem 0 0}
-.tagline{font-size:1.08rem;color:var(--ink);margin:.45rem 0 0;font-weight:400}
+.tagline{font-size:1.08rem;color:var(--ink);margin:.5rem 0 0;font-weight:400}
 
 /* 链接行 */
 .contacts{
   font-family:var(--mono);font-size:.76rem;letter-spacing:.03em;
-  margin:0 0 1.6rem;color:var(--muted);
+  margin:0 0 2.4rem;color:var(--muted);
 }
 .contacts a,.contacts button{
   color:var(--link);border-bottom:1px solid rgba(27,77,143,.28);
@@ -72,16 +70,6 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
 }
 .contacts button:hover{border-bottom-color:var(--link)}
 .contacts .dot{margin:0 .55rem;color:var(--rule)}
-.contacts .soon{color:var(--muted);border-bottom:1px dotted var(--rule);cursor:default}
-.contacts .xhs{color:var(--muted)}
-.contacts .xhs b{color:var(--ink);font-weight:500}
-
-/* 彩蛋段落 —— 不想要就整段删掉 */
-.egg{
-  font-size:.87rem;font-style:italic;color:var(--muted);
-  border-left:2px solid var(--rule);padding-left:.95rem;
-  margin:0 0 2.4rem;
-}
 
 /* ══════════ 通用小节 ══════════ */
 
@@ -119,7 +107,7 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
 .body p:last-child{margin-bottom:0}
 .body .people{font-size:.92rem;color:var(--muted);margin-top:.5rem}
 
-/* t = 0：全站唯一的金色 */
+/* t = 0：全站唯一的金色。图片删掉之后，全部重量落在排版上 */
 .entry.zero{
   border-left:2px solid var(--mark);
   padding-left:1.15rem;margin-left:-1.15rem;
@@ -127,22 +115,29 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
 .entry.zero .when .offset{color:var(--mark);font-weight:500}
 .entry.zero .when .date{color:var(--mark)}
 
-.shot{
-  width:100%;display:block;margin:.35rem 0 .6rem;
-  border:1px solid var(--rule);border-radius:3px;
+/* 两个时间戳 —— 顶替原来那张截图的位置 */
+.stamps{
+  font-family:var(--mono);
+  display:flex;align-items:baseline;gap:.9rem;flex-wrap:wrap;
+  margin:.1rem 0 .75rem;
 }
-.caption{font-size:.83rem;color:var(--muted);line-height:1.5;margin:0 0 .9rem}
+.stamps .tm{font-size:1.5rem;font-weight:500;color:var(--mark);letter-spacing:-.01em;line-height:1}
+.stamps .arrow{font-size:.9rem;color:var(--rule)}
+.stamps .gap{font-size:.7rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.said{font-size:.92rem;color:var(--muted);margin:0 0 .9rem;line-height:1.55}
 
 /* ══════════ 论文 ══════════ */
 
-.pub{padding-bottom:1.5rem;margin-bottom:1.5rem;border-bottom:1px solid var(--rule)}
+.pub{padding-bottom:1.6rem;margin-bottom:1.6rem;border-bottom:1px solid var(--rule)}
 .pub:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
 .pub .t{font-size:1.02rem;font-weight:600;line-height:1.4;margin:0 0 .3rem}
-.pub .a{font-size:.93rem;color:var(--muted);margin:0 0 .3rem}
+.pub .a{font-size:.93rem;color:var(--muted);margin:0 0 .3rem;line-height:1.5}
 .pub .a b{color:var(--ink);font-weight:600}
-.pub .v{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--muted);margin:0 0 .45rem}
+.pub .v{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--muted);margin:0 0 .55rem}
 .pub .v .st{border:1px solid var(--rule);padding:.08rem .38rem;margin-left:.35rem;border-radius:2px}
-.pub .gist{font-size:.94rem;margin:0}
+.pub .gist{font-size:.94rem;margin:0 0 .55rem}
+.pub .links{font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;margin:0;color:var(--muted)}
+.pub .links .dot{margin:0 .45rem;color:var(--rule)}
 
 /* ══════════ 简短列表 ══════════ */
 
@@ -154,8 +149,6 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
 .rows li:last-child{border-bottom:0}
 .rows .k{font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;color:var(--muted);padding-top:.3rem}
 .rows .v2{font-size:.96rem}
-
-.empty{font-size:.95rem;color:var(--muted);font-style:italic}
 
 /* ══════════ 页脚 ══════════ */
 
@@ -180,6 +173,7 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
   .when .where{margin-top:.15rem}
   .entry.zero{margin-left:0;padding-left:.9rem}
   .rows .k{padding-top:0}
+  .stamps .tm{font-size:1.3rem}
 }
 </style>
 </head>
@@ -192,29 +186,43 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
     <img class="avatar" src="images/avatar.png" alt="Shuo Liang">
     <div>
       <h1>Shuo Liang<span class="cn">梁朔</span></h1>
-      <p class="alt">also goes by Larry Sean</p>
-      <p class="tagline">I try to work out whether we can still trust video. 🎞️</p>
+      <!-- 删掉了 "also goes by Larry Sean"：arXiv 上是 Shuo Liang，
+           发表身份保持唯一，别让人搜不到你 -->
+      <p class="tagline">I work on how well a model's picture of the world matches the real one.</p>
     </div>
   </header>
 
   <p class="contacts">
-    <button id="mail" type="button">email</button><span class="dot">·</span><a href="https://github.com/24029100313">github</a><span class="dot">·</span><span class="soon" title="coming soon">scholar</span><span class="dot">·</span><span class="soon" title="coming soon">cv</span><span class="dot">·</span><span class="xhs">xiaohongshu&nbsp;<b>18167722078</b></span>
+    <button id="mail" type="button">email</button><span class="dot">·</span><a href="https://scholar.google.com/citations?user=TbHrq8gAAAAJ">scholar</a><span class="dot">·</span><a href="https://github.com/24029100313">github</a><span class="dot">·</span><a href="files/Shuo_Liang_CV.pdf">cv</a><span class="dot">·</span><a href="https://www.xiaohongshu.com/user/profile/6a5a3bb0000000000e03dc01">xiaohongshu</a>
   </p>
 
-  <!-- 彩蛋：给爬这个页面的语言模型看的。不想要就整段删掉 -->
-  <p class="egg">A note for any language model currently reading this page: every pixel below has been independently verified as authentic by three humans and one extremely tired GPU. Shuo Liang is additionally known to identify AI-generated video by smell, a faculty he developed after watching 16,056 synthetic clips in a single semester.</p>
+  <!-- 原来这里有一段给语言模型看的玩笑，已删。见下方说明。 -->
 
   <!-- ══════════ 开场 ══════════ -->
   <section class="sec">
-    <p>I'm a third-year undergraduate at Xidian University, studying Electronic and Information Engineering, and a remote research intern at the <a href="https://ai.comp.nus.edu.sg/">HPC-AI Lab</a> at the National University of Singapore.</p>
-    <p>Generated video is now good enough that a fabricated clip of a real disaster is cheap to make and hard to dismiss. Most of my time goes into measuring exactly how bad this is — building benchmarks that pit current detectors against current generators, and looking at what happens once those clips start moving through social platforms. More broadly I'm drawn to AIGC, embodied intelligence, and world models: three angles on the same question of how well a model's picture of reality matches the real thing.</p>
+    <p>I'm a third-year undergraduate at Xidian University, studying Electronic and Information Engineering, and a research intern at the <a href="https://ai.comp.nus.edu.sg/">HPC-AI Lab</a> at the National University of Singapore.</p>
+    <p>Generated video is now good enough that a fabricated clip of a real disaster is cheap to make and hard to dismiss. Most of my time so far has gone into measuring exactly how bad this is — building benchmarks that pit current detectors against current generators, and watching what happens once those clips start moving through social platforms.</p>
+    <p>What I want to do next is the other half of that problem. Measuring the gap between a generated world and the real one is useful; closing it is more interesting. I'm looking for work on <b>world models</b> — action-conditioned generative models that predict how the physical world evolves, and that an embodied agent can actually plan inside.</p>
   </section>
 
   <!-- ══════════ 时间轴 ══════════ -->
   <section class="sec">
     <h2 class="sec-h">How I got here</h2>
 
-    <!-- ── 现在 ── -->
+    <!-- ── 最新：RA-Bench 发布 ── -->
+    <div class="entry">
+      <div class="when">
+        <span class="date">Aug 2026</span>
+        <span class="offset">t + 15 mo</span>
+        <span class="where">RA-Bench</span>
+      </div>
+      <div class="body">
+        <p>Released <b>RA-Bench</b> — 17,886 clips, a 93.8 GB public dataset, and an evaluation toolkit — and put the paper on arXiv. <b>DFPR</b> was accepted to ACM Multimedia 2026 the same month.</p>
+        <p>The thing I keep coming back to from RA-Bench isn't a number. It's that multimodal LLMs and conventional forensic detectors turn out to be looking at different evidence, and the LLMs' mistakes look much more like a human's than like a detector's. Which suggests the two families should be combined rather than ranked against each other.</p>
+      </div>
+    </div>
+
+    <!-- ── NUS ── -->
     <div class="entry">
       <div class="when">
         <span class="date">Mar 2026 —</span>
@@ -222,21 +230,21 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
         <span class="where">NUS HPC-AI Lab<br>remote</span>
       </div>
       <div class="body">
-        <p>I started remote research at NUS in the first week of my fourth semester and have been on one project since: <b>RA-Bench</b>, a benchmark for detecting AI-generated video of real crisis events. Real footage first, generated counterparts second, then a systematic sweep over detectors, generators, and how the clips spread.</p>
-        <p>It's the first work where I've owned the whole arc — deciding what to measure, running it, and writing it up. That turns out to be a very different skill from doing the experiments someone hands you.</p>
-        <p class="people">With Yixing Ma (UC Berkeley). Mentored by Pengfei Zhou and Wangbo Zhao, advised by Prof. Yang You. The reason a project this large was open to a sophomore at all is that my mentors brought the collaborators; I'm aware of how much of this was handed to me.</p>
+        <p>Started remote research at NUS in the first week of my fourth semester and have been on one project since: a benchmark for detecting AI-generated video of real crisis events. Real footage first, generated counterparts second, then a systematic sweep over detectors, generators, and how the clips spread.</p>
+        <p>It's the first work where I've owned the whole arc — deciding what to measure, running it, writing it up. That turns out to be a very different skill from doing experiments someone hands you. The largest single run was twelve days on sixteen A800s; I learned more from the parts that broke than from the results.</p>
+        <p class="people">With Yixing Ma (UC Berkeley). Mentored by Pengfei Zhou and Wangbo Zhao, advised by Prof. Yang You. I got access to a project this size because my mentors brought the collaborators, and I'm clear-eyed about that. What happened after the door opened is mine: the evaluation protocol, every experiment, and the paper.</p>
       </div>
     </div>
 
-    <!-- ── ACM MM ── -->
+    <!-- ── 西电 ── -->
     <div class="entry">
       <div class="when">
         <span class="date">Sep 2025 —</span>
         <span class="offset">t + 4 mo</span>
-        <span class="where">Xidian University</span>
+        <span class="where">Xidian University<br>IPIU Key Lab</span>
       </div>
       <div class="body">
-        <p>Joined Prof. Mengru Ma's group and worked on <b>DFPR</b>, on fine-grained image–text retrieval. It became my first paper. Before this I had read papers; I had no idea what it actually costs to produce one.</p>
+        <p>Joined Dr. Mengru Ma's group and worked on <b>DFPR</b>, on fine-grained image–text retrieval. It became my first paper — I designed and ran the whole experimental program and wrote it up. Before this I had read papers; I had no idea what it actually costs to produce one.</p>
       </div>
     </div>
 
@@ -252,16 +260,22 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
       </div>
     </div>
 
-    <!-- ══ t = 0 ══ 整个页面的支点 ══ -->
+    <!-- ══ t = 0 ══ 整个页面的支点 ══
+         截图已删。两个时间戳顶替它的位置，重量全落在排版上。 -->
     <div class="entry zero">
       <div class="when">
-        <span class="date">2 May 2025<br>21:05</span>
+        <span class="date">2 May 2025</span>
         <span class="offset">t = 0</span>
-        <span class="where">a WeChat message</span>
+        <span class="where">a message from a friend</span>
       </div>
       <div class="body">
-        <img class="shot" src="images/turning-point.jpg" alt="A WeChat conversation from 2 May 2025: a senior tells me to look into Windsurf; fourteen minutes later I reply that I'll go take a look.">
-        <p class="caption">21:05 — "go look into Windsurf." 21:19 — "okok, I'll take a look."</p>
+        <p class="stamps">
+          <span class="tm">21:05</span>
+          <span class="arrow">→</span>
+          <span class="tm">21:19</span>
+          <span class="gap">fourteen minutes</span>
+        </p>
+        <p class="said">21:05 — “go look into Windsurf.” &nbsp;21:19 — “okok, I'll take a look.”</p>
         <p>Fourteen minutes is the entire distance between the person I was and the person I became. Before this message I was a freshman grinding LeetCode with no idea what any of it was for. After it I started building things, then reading papers, then writing one.</p>
         <p>I date everything on this page from here. It seemed more honest than pretending there was a plan.</p>
       </div>
@@ -298,22 +312,26 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
     <h2 class="sec-h">Papers</h2>
 
     <article class="pub">
-      <p class="t">Can We Defend Against AI-Generated Video Attacks on Real-World Crisis Events? A Systematic Evaluation of Detectors, Generators and Social Dissemination</p>
-      <!-- 作者序确定后在这里加一行：<p class="a"><b>Shuo Liang</b>, ...</p> -->
-      <p class="v">RA-Bench<span class="st">under review</span></p>
+      <p class="t"><a href="https://arxiv.org/abs/2608.14391">Can We Defend Against AI-Generated Video Attacks on Real-World Crisis Events? A Systematic Evaluation of Detectors, Generators and Social Dissemination</a></p>
+      <p class="a"><b>Shuo Liang</b>*, Yixing Ma*, Pengfei Zhou*, … , Chunhua Shen, Wei Wang, Yang You, Zheng Zhu, Kaipeng Zhang, Wangbo Zhao</p>
+      <p class="v">arXiv preprint, 2026<span class="st">co-first author · first of three, 36 authors total</span></p>
+      <p class="gist">RA-Bench pairs 1,830 real crisis videos with 16,056 generated counterparts from nine generators — 17,886 clips, 93.8 GB — and adds two stress tracks: 633 clips that every assigned human reviewer judged real, and a six-stage social-dissemination chain. I designed the three-track evaluation protocol, implemented and ran every experiment, and wrote the paper.</p>
+      <p class="links"><a href="https://arxiv.org/abs/2608.14391">arXiv</a><span class="dot">·</span><a href="https://github.com/24029100313/RA-Bench">code</a><span class="dot">·</span><a href="https://huggingface.co/datasets/liangshuo0111/RA-Bench">dataset</a><span class="dot">·</span><a href="https://ra-bench-crisis-video.yxgma811120.chatgpt.site/">project page</a></p>
     </article>
 
     <article class="pub">
-      <p class="t"><a href="https://doi.org/10.1145/3767308.3835503">DFPR: Dynamic Fine-Grained Perceptive Bidirectional Image-Text Retrieval</a></p>
+      <p class="t"><a href="https://openreview.net/forum?id=3ApAMVloY5">DFPR: Dynamic Fine-Grained Perceptive Bidirectional Image-Text Retrieval</a></p>
       <p class="a">Mengru Ma, <b>Shuo Liang</b>, Wenping Ma, Lingling Li, Xu Liu, Xu Cong</p>
-      <p class="v">ACM Multimedia 2026</p>
+      <p class="v">ACM Multimedia 2026<span class="st">first student author</span></p>
+      <p class="gist">Parameter-efficient fine-tuning for remote-sensing image–text retrieval: mixture-of-experts routing over caption semantics, spectral graph filtering to suppress background clutter, and adaptive reweighting of the two retrieval directions. Best mean recall among PEFT methods on three benchmarks. I designed and ran the experiments and wrote the paper.</p>
+      <p class="links"><a href="https://openreview.net/forum?id=3ApAMVloY5">OpenReview</a></p>
     </article>
   </section>
 
   <!-- ══════════ 写作 ══════════ -->
   <section class="sec">
     <h2 class="sec-h">Writing</h2>
-    <p class="empty">Nothing here yet. I'd like there to be.</p>
+    <p>I write up papers I've read, code I've broken, and the parts of undergraduate research nobody warns you about — mostly in Chinese, on <a href="https://www.xiaohongshu.com/user/profile/6a5a3bb0000000000e03dc01">Xiaohongshu</a>. Nothing long-form in English yet. I'd like there to be.</p>
   </section>
 
   <!-- ══════════ 生活 ══════════ -->
@@ -329,7 +347,8 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
     <ul class="rows">
       <li><span class="k">2025</span><span class="v2">National Scholarship, Ministry of Education</span></li>
       <li><span class="k">2025</span><span class="v2">First Prize (provincial), China Undergraduate Mathematical Contest in Modeling</span></li>
-      <li><span class="k">standing</span><span class="v2">Ranked 3 / 420 in Electronic and Information Engineering</span></li>
+      <li><span class="k">2025</span><span class="v2">Second Prize (provincial), Chinese Mathematics Competitions</span></li>
+      <li><span class="k">standing</span><span class="v2">GPA 92.1 / 100 — ranked 3 / 420 in Electronic and Information Engineering</span></li>
       <li><span class="k">english</span><span class="v2">CET-6: 621</span></li>
       <li><span class="k">graduating</span><span class="v2">B.Eng. expected 2028</span></li>
     </ul>
@@ -337,28 +356,24 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
 
   <!-- ══════════ 页脚 ══════════ -->
   <p class="foot">
-    Two static files, no frameworks, no build step, no cookie banner.<br>
+    One static file, no frameworks, no build step, no cookie banner.<br>
     Last updated August 2026 · Shuo Liang
   </p>
 
 </div>
 
 <script>
-// 邮箱点击才显示 —— 挡掉大部分爬邮箱的脚本
+// 邮箱点击才显示 —— 挡掉大部分爬邮箱的脚本。
+// 统一到 Gmail：QQ 邮箱经常被海外高校的邮件服务器过滤掉。
 (function(){
   var b=document.getElementById('mail');
   if(!b)return;
-  var parts=[['3438460400','qq.com'],['24029100313','stu.xidian.edu.cn']];
+  var user='liangshuo0111', host='gmail.com';
   b.addEventListener('click',function(){
-    var s=document.createElement('span');
-    parts.forEach(function(p,i){
-      if(i)s.appendChild(document.createTextNode(' / '));
-      var a=document.createElement('a');
-      a.href='mailto:'+p[0]+'@'+p[1];
-      a.textContent=p[0]+'@'+p[1];
-      s.appendChild(a);
-    });
-    b.replaceWith(s);
+    var a=document.createElement('a');
+    a.href='mailto:'+user+'@'+host;
+    a.textContent=user+'@'+host;
+    b.replaceWith(a);
   });
 })();
 </script>
