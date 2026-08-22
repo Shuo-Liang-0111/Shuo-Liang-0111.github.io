@@ -107,24 +107,13 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
 .body p:last-child{margin-bottom:0}
 .body .people{font-size:.92rem;color:var(--muted);margin-top:.5rem}
 
-/* t = 0：全站唯一的金色。图片删掉之后，全部重量落在排版上 */
+/* t = 0：全站唯一的金色，用来标记方向开始改变的那个阶段 */
 .entry.zero{
   border-left:2px solid var(--mark);
   padding-left:1.15rem;margin-left:-1.15rem;
 }
 .entry.zero .when .offset{color:var(--mark);font-weight:500}
 .entry.zero .when .date{color:var(--mark)}
-
-/* 两个时间戳 —— 顶替原来那张截图的位置 */
-.stamps{
-  font-family:var(--mono);
-  display:flex;align-items:baseline;gap:.9rem;flex-wrap:wrap;
-  margin:.1rem 0 .75rem;
-}
-.stamps .tm{font-size:1.5rem;font-weight:500;color:var(--mark);letter-spacing:-.01em;line-height:1}
-.stamps .arrow{font-size:.9rem;color:var(--rule)}
-.stamps .gap{font-size:.7rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-.said{font-size:.92rem;color:var(--muted);margin:0 0 .9rem;line-height:1.55}
 
 /* ══════════ 论文 ══════════ */
 
@@ -152,6 +141,17 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
 .pub .gist{grid-column:2;grid-row:2;font-size:.94rem;margin:0}
 .pub .links{font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;margin:0;color:var(--muted)}
 .pub .links .dot{margin:0 .45rem;color:var(--rule)}
+.paper-badge{margin:.65rem 0 0!important}
+.hf-badge{
+  display:inline-flex;align-items:stretch;overflow:hidden;
+  border:0;border-radius:3px;box-shadow:0 0 0 1px rgba(26,26,24,.12);
+  font-family:var(--sans);font-size:.69rem;font-weight:600;line-height:1;
+  vertical-align:middle;
+}
+.hf-badge:hover{border-bottom:0;box-shadow:0 0 0 1px rgba(26,26,24,.3)}
+.hf-badge .label{background:#2B2B2B;color:#fff;padding:.34rem .48rem}
+.hf-badge .icon{margin-right:.28rem}
+.hf-badge .rank{background:#FFD21E;color:#1A1A18;padding:.34rem .42rem}
 
 /* ══════════ 简短列表 ══════════ */
 
@@ -187,7 +187,6 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
   .when .where{margin-top:.15rem}
   .entry.zero{margin-left:0;padding-left:.9rem}
   .rows .k{padding-top:0}
-  .stamps .tm{font-size:1.3rem}
   .pub{grid-template-columns:84px minmax(0,1fr);column-gap:.85rem;row-gap:.8rem}
   .pub-cover{grid-row:1;box-shadow:0 2px 8px rgba(30,29,25,.08)}
   .pub-meta{grid-column:2;grid-row:1}
@@ -228,42 +227,72 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
   <section class="sec">
     <h2 class="sec-h">How I got here</h2>
 
-    <!-- ── 最新：RA-Bench 发布 ── -->
+    <!-- ── RA-Bench 完稿、上线 ── -->
     <div class="entry">
       <div class="when">
-        <span class="date">Aug 2026</span>
-        <span class="offset">t + 15 mo</span>
-        <span class="where">RA-Bench</span>
+        <span class="date">14–17 Aug 2026</span>
+        <span class="where">RA-Bench · arXiv</span>
       </div>
       <div class="body">
-        <p>Released <b>RA-Bench</b> — 17,886 clips, a 93.8 GB public dataset, and an evaluation toolkit — and put the paper on arXiv. <b>DFPR</b> was accepted to ACM Multimedia 2026 the same month.</p>
+        <p>We finished <b>RA-Bench</b> and submitted the manuscript to arXiv on 14 August. It went live on 17 August alongside a 93.8 GB public dataset and evaluation toolkit — and reached <b>#1 on Hugging Face Daily Papers</b> that day.</p>
         <p>The thing I keep coming back to from RA-Bench isn't a number. It's that multimodal LLMs and conventional forensic detectors turn out to be looking at different evidence, and the LLMs' mistakes look much more like a human's than like a detector's. Which suggests the two families should be combined rather than ranked against each other.</p>
       </div>
     </div>
 
-    <!-- ── NUS ── -->
+    <!-- ── DFPR 接收 ── -->
     <div class="entry">
       <div class="when">
-        <span class="date">Mar 2026 —</span>
-        <span class="offset">t + 10 mo</span>
-        <span class="where">NUS HPC-AI Lab<br>remote</span>
+        <span class="date">10 Jul 2026</span>
+        <span class="where">ACM Multimedia</span>
       </div>
       <div class="body">
-        <p>Started remote research at NUS in the first week of my fourth semester and have been on one project since: a benchmark for detecting AI-generated video of real crisis events. Real footage first, generated counterparts second, then a systematic sweep over detectors, generators, and how the clips spread.</p>
-        <p>It's the first work where I've owned the whole arc — deciding what to measure, running it, writing it up. That turns out to be a very different skill from doing experiments someone hands you. The largest single run was twelve days on sixteen A800s; I learned more from the parts that broke than from the results.</p>
-        <p class="people">With Yixing Ma (UC Berkeley). Mentored by Pengfei Zhou and Wangbo Zhao, advised by Prof. Yang You. I got access to a project this size because my mentors brought the collaborators, and I'm clear-eyed about that. What happened after the door opened is mine: the evaluation protocol, every experiment, and the paper.</p>
+        <p>The decision arrived after rebuttal: <b>DFPR</b>, my first paper, had been accepted to ACM Multimedia 2026. It closed a nine-month loop of early experiments, a rough first draft, several rounds of spring revisions, submission, and rebuttal — much of it while RA-Bench was moving in parallel.</p>
       </div>
     </div>
 
-    <!-- ── 西电 ── -->
+    <!-- ── 春季：DFPR 投稿，重心转向 RA-Bench ── -->
     <div class="entry">
       <div class="when">
-        <span class="date">Sep 2025 —</span>
-        <span class="offset">t + 4 mo</span>
+        <span class="date">Mar–Apr 2026</span>
+        <span class="where">DFPR + RA-Bench</span>
+      </div>
+      <div class="body">
+        <p>When the spring semester began, I revised DFPR through several versions and submitted it to ACM Multimedia. Once the submission was in, I shifted nearly all of my attention to RA-Bench: curating real crisis footage, generating counterparts, building the three evaluation tracks, and running experiments at scale.</p>
+      </div>
+    </div>
+
+    <!-- ── 春节前后：加入 HPC-AI Lab，启动 RA-Bench ── -->
+    <div class="entry">
+      <div class="when">
+        <span class="date">Lunar New Year 2026</span>
+        <span class="where">NUS HPC-AI Lab<br>remote</span>
+      </div>
+      <div class="body">
+        <p>Around Lunar New Year, I joined the HPC-AI Lab as a remote research intern and began collaborating on what would become <b>RA-Bench</b>: a benchmark for detecting AI-generated videos of real crisis events, from real footage and generated counterparts to detectors, generators, and social dissemination.</p>
+        <p>It became the first project where I owned the whole arc — deciding what to measure, implementing the protocol, running every experiment, and writing the paper. The largest single run took twelve days on sixteen A800s; I learned more from the parts that broke than from the results.</p>
+        <p class="people">With Yixing Ma (UC Berkeley). Mentored by Pengfei Zhou and Wangbo Zhao, and advised by Prof. Yang You. My mentors opened the door to a collaboration of this scale; what I did after that door opened is the work I am proudest of.</p>
+      </div>
+    </div>
+
+    <!-- ── DFPR 初稿 ── -->
+    <div class="entry">
+      <div class="when">
+        <span class="date">Jan 2026</span>
+        <span class="where">DFPR · first draft</span>
+      </div>
+      <div class="body">
+        <p>By January, DFPR had a first complete draft. It was rough, but carrying an idea through experimental design, implementation, evaluation, and writing made research feel less like something done by other people and more like a craft I could learn.</p>
+      </div>
+    </div>
+
+    <!-- ── DFPR 启动 ── -->
+    <div class="entry">
+      <div class="when">
+        <span class="date">Oct 2025</span>
         <span class="where">Xidian University<br>IPIU Key Lab</span>
       </div>
       <div class="body">
-        <p>Joined Dr. Mengru Ma's group and worked on <b>DFPR</b>, on fine-grained image–text retrieval. It became my first paper — I designed and ran the whole experimental program and wrote it up. Before this I had read papers; I had no idea what it actually costs to produce one.</p>
+        <p>At the start of my sophomore fall, I joined Dr. Mengru Ma's group and began <b>DFPR</b>, on fine-grained image–text retrieval. Before this I had read papers; I had no idea what it actually cost to turn an idea into one.</p>
       </div>
     </div>
 
@@ -271,7 +300,6 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
     <div class="entry">
       <div class="when">
         <span class="date">Sep 2025</span>
-        <span class="offset">t + 4 mo</span>
         <span class="where">CUMCM</span>
       </div>
       <div class="body">
@@ -279,24 +307,16 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
       </div>
     </div>
 
-    <!-- ══ t = 0 ══ 整个页面的支点 ══
-         截图已删。两个时间戳顶替它的位置，重量全落在排版上。 -->
+    <!-- ══ t = 0 ══ 一个小推动，而不是精确到分钟的戏剧化转折 ══ -->
     <div class="entry zero">
       <div class="when">
-        <span class="date">2 May 2025</span>
+        <span class="date">Spring 2025</span>
         <span class="offset">t = 0</span>
-        <span class="where">a message from a friend</span>
+        <span class="where">a small nudge</span>
       </div>
       <div class="body">
-        <p class="stamps">
-          <span class="tm">21:05</span>
-          <span class="arrow">→</span>
-          <span class="tm">21:19</span>
-          <span class="gap">fourteen minutes</span>
-        </p>
-        <p class="said">21:05 — “go look into Windsurf.” &nbsp;21:19 — “okok, I'll take a look.”</p>
-        <p>Fourteen minutes is the entire distance between the person I was and the person I became. Before this message I was a freshman grinding LeetCode with no idea what any of it was for. After it I started building things, then reading papers, then writing one.</p>
-        <p>I date everything on this page from here. It seemed more honest than pretending there was a plan.</p>
+        <p>A friend casually suggested that I try Windsurf. It was a small thing, not a dramatic revelation, but it nudged me away from blindly optimizing for grades. I started building things for myself, followed questions into papers, and gradually began exploring research as a direction of my own.</p>
+        <p>There was no grand plan. This is simply where being busy started turning into being curious.</p>
       </div>
     </div>
 
@@ -304,7 +324,6 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
     <div class="entry">
       <div class="when">
         <span class="date">Sep 2024</span>
-        <span class="offset">t − 8 mo</span>
         <span class="where">Xidian University</span>
       </div>
       <div class="body">
@@ -316,11 +335,11 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
     <div class="entry">
       <div class="when">
         <span class="date">2021 – 2024</span>
-        <span class="offset">t − 4 yr</span>
         <span class="where">Qingdao No. 2 High School</span>
       </div>
       <div class="body">
-        <p>Three demanding years that produced nothing worth listing here, and most of the stamina I've been spending since.</p>
+        <p>Qingdao No. 2 High School helped turn the immature version of me who arrived from junior high into someone steadier and more self-possessed. Its ideal — <span lang="zh">“造就终身发展之生命主体”</span>, to cultivate people capable of directing their own lifelong growth — together with its teaching environment and atmosphere, gave me much of the ground I stand on now.</p>
+        <p>Those three years were not a clean upward line. I was lost at times, knocked back often, and learned to keep moving by feeling my way forward. I still remember the daily PE class; the hardest, quietest, most suffocating stretch of self-study before the gaokao; the friends who walked through all of it beside me — and one presence I still prefer to leave between the lines.</p>
       </div>
     </div>
 
@@ -339,6 +358,7 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
         <p class="a"><b>Shuo Liang</b>*, Yixing Ma*, Pengfei Zhou*, … , Chunhua Shen, Wei Wang, Yang You, Zheng Zhu, Kaipeng Zhang, Wangbo Zhao</p>
         <p class="v">arXiv preprint, 2026<span class="st">co-first author · first of three, 36 authors total</span></p>
         <p class="links"><a href="https://arxiv.org/abs/2608.14391">arXiv</a><span class="dot">·</span><a href="https://github.com/24029100313/RA-Bench">code</a><span class="dot">·</span><a href="https://huggingface.co/datasets/liangshuo0111/RA-Bench">dataset</a><span class="dot">·</span><a href="https://ra-bench-crisis-video.yxgma811120.chatgpt.site/">project page</a></p>
+        <p class="paper-badge"><a class="hf-badge" href="https://huggingface.co/papers/2608.14391" aria-label="RA-Bench ranked number one on Hugging Face Daily Papers"><span class="label"><span class="icon" aria-hidden="true">🤗</span>Hugging Face Daily Papers</span><span class="rank">#1</span></a></p>
       </div>
       <p class="gist">RA-Bench pairs 1,830 real crisis videos with 16,056 generated counterparts from nine generators — 17,886 clips, 93.8 GB — and adds two stress tracks: 633 clips that every assigned human reviewer judged real, and a six-stage social-dissemination chain. I designed the three-track evaluation protocol, implemented and ran every experiment, and wrote the paper.</p>
     </article>
@@ -370,10 +390,12 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
     <p>I play basketball and badminton. I've watched Stephen Curry take roughly ten thousand shots I had no business believing would go in, and I keep watching, which is probably the single most useful thing sport has taught me about research.</p>
   </section>
 
-  <!-- ══════════ 奖项 ══════════ -->
+  <!-- ══════════ 动态 ══════════ -->
   <section class="sec">
-    <h2 class="sec-h">Odds and ends</h2>
+    <h2 class="sec-h">News</h2>
     <ul class="rows">
+      <li><span class="k">Aug 2026</span><span class="v2">RA-Bench went live on arXiv and reached #1 on Hugging Face Daily Papers.</span></li>
+      <li><span class="k">Jul 2026</span><span class="v2">DFPR was accepted to ACM Multimedia 2026.</span></li>
       <li><span class="k">2025</span><span class="v2">National Scholarship, Ministry of Education</span></li>
       <li><span class="k">2025</span><span class="v2">First Prize (provincial), China Undergraduate Mathematical Contest in Modeling</span></li>
       <li><span class="k">2025</span><span class="v2">Second Prize (provincial), Chinese Mathematics Competitions</span></li>
