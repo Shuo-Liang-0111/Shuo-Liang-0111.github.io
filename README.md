@@ -7,6 +7,8 @@
 ```
 index.html                  # 全部内容与样式都在这一个文件里
 images/avatar.png           # 头像，页面裁成圆形显示
+images/paper-ra-bench-cover.webp  # RA-Bench 论文首页缩略图
+images/paper-dfpr-cover.webp      # DFPR 论文首页缩略图
 files/Shuo_Liang_CV.pdf     # CV，页眉的 cv 链接指向这里
 .nojekyll                   # 告诉 GitHub Pages 不要跑 Jekyll
 ```

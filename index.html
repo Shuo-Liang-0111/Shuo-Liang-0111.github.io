@@ -128,14 +128,28 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
 
 /* ══════════ 论文 ══════════ */
 
-.pub{padding-bottom:1.6rem;margin-bottom:1.6rem;border-bottom:1px solid var(--rule)}
+.pub{
+  display:grid;grid-template-columns:112px minmax(0,1fr);
+  column-gap:1.25rem;row-gap:.65rem;
+  padding-bottom:1.6rem;margin-bottom:1.6rem;border-bottom:1px solid var(--rule);
+}
 .pub:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.pub-cover{
+  grid-column:1;grid-row:1 / span 2;display:block;overflow:hidden;
+  align-self:start;
+  background:#fff;border:1px solid var(--rule);border-radius:2px;
+  box-shadow:0 3px 12px rgba(30,29,25,.08);
+  transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease;
+}
+.pub-cover:hover{border-color:#B8B5AA;box-shadow:0 5px 16px rgba(30,29,25,.12);transform:translateY(-1px)}
+.pub-cover img{display:block;width:100%;height:auto}
+.pub-meta{grid-column:2;grid-row:1;min-width:0}
 .pub .t{font-size:1.02rem;font-weight:600;line-height:1.4;margin:0 0 .3rem}
 .pub .a{font-size:.93rem;color:var(--muted);margin:0 0 .3rem;line-height:1.5}
 .pub .a b{color:var(--ink);font-weight:600}
 .pub .v{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--muted);margin:0 0 .55rem}
 .pub .v .st{border:1px solid var(--rule);padding:.08rem .38rem;margin-left:.35rem;border-radius:2px}
-.pub .gist{font-size:.94rem;margin:0 0 .55rem}
+.pub .gist{grid-column:2;grid-row:2;font-size:.94rem;margin:0}
 .pub .links{font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;margin:0;color:var(--muted)}
 .pub .links .dot{margin:0 .45rem;color:var(--rule)}
 
@@ -174,6 +188,11 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
   .entry.zero{margin-left:0;padding-left:.9rem}
   .rows .k{padding-top:0}
   .stamps .tm{font-size:1.3rem}
+  .pub{grid-template-columns:84px minmax(0,1fr);column-gap:.85rem;row-gap:.8rem}
+  .pub-cover{grid-row:1;box-shadow:0 2px 8px rgba(30,29,25,.08)}
+  .pub-meta{grid-column:2;grid-row:1}
+  .pub .gist{grid-column:1 / -1;grid-row:2}
+  .pub .v .st{display:inline-block;margin:.25rem 0 0}
 }
 </style>
 </head>
@@ -312,19 +331,29 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
     <h2 class="sec-h">Papers</h2>
 
     <article class="pub">
-      <p class="t"><a href="https://arxiv.org/abs/2608.14391">Can We Defend Against AI-Generated Video Attacks on Real-World Crisis Events? A Systematic Evaluation of Detectors, Generators and Social Dissemination</a></p>
-      <p class="a"><b>Shuo Liang</b>*, Yixing Ma*, Pengfei Zhou*, … , Chunhua Shen, Wei Wang, Yang You, Zheng Zhu, Kaipeng Zhang, Wangbo Zhao</p>
-      <p class="v">arXiv preprint, 2026<span class="st">co-first author · first of three, 36 authors total</span></p>
+      <a class="pub-cover" href="https://arxiv.org/abs/2608.14391" aria-label="Open the RA-Bench paper on arXiv">
+        <img src="images/paper-ra-bench-cover.webp" alt="First page of the RA-Bench paper" width="600" height="848" loading="lazy" decoding="async">
+      </a>
+      <div class="pub-meta">
+        <p class="t"><a href="https://arxiv.org/abs/2608.14391">Can We Defend Against AI-Generated Video Attacks on Real-World Crisis Events? A Systematic Evaluation of Detectors, Generators and Social Dissemination</a></p>
+        <p class="a"><b>Shuo Liang</b>*, Yixing Ma*, Pengfei Zhou*, … , Chunhua Shen, Wei Wang, Yang You, Zheng Zhu, Kaipeng Zhang, Wangbo Zhao</p>
+        <p class="v">arXiv preprint, 2026<span class="st">co-first author · first of three, 36 authors total</span></p>
+        <p class="links"><a href="https://arxiv.org/abs/2608.14391">arXiv</a><span class="dot">·</span><a href="https://github.com/24029100313/RA-Bench">code</a><span class="dot">·</span><a href="https://huggingface.co/datasets/liangshuo0111/RA-Bench">dataset</a><span class="dot">·</span><a href="https://ra-bench-crisis-video.yxgma811120.chatgpt.site/">project page</a></p>
+      </div>
       <p class="gist">RA-Bench pairs 1,830 real crisis videos with 16,056 generated counterparts from nine generators — 17,886 clips, 93.8 GB — and adds two stress tracks: 633 clips that every assigned human reviewer judged real, and a six-stage social-dissemination chain. I designed the three-track evaluation protocol, implemented and ran every experiment, and wrote the paper.</p>
-      <p class="links"><a href="https://arxiv.org/abs/2608.14391">arXiv</a><span class="dot">·</span><a href="https://github.com/24029100313/RA-Bench">code</a><span class="dot">·</span><a href="https://huggingface.co/datasets/liangshuo0111/RA-Bench">dataset</a><span class="dot">·</span><a href="https://ra-bench-crisis-video.yxgma811120.chatgpt.site/">project page</a></p>
     </article>
 
     <article class="pub">
-      <p class="t"><a href="https://openreview.net/forum?id=3ApAMVloY5">DFPR: Dynamic Fine-Grained Perceptive Bidirectional Image-Text Retrieval</a></p>
-      <p class="a">Mengru Ma, <b>Shuo Liang</b>, Wenping Ma, Lingling Li, Xu Liu, Xu Cong</p>
-      <p class="v">ACM Multimedia 2026<span class="st">first student author</span></p>
+      <a class="pub-cover" href="https://openreview.net/forum?id=3ApAMVloY5" aria-label="Open the DFPR paper on OpenReview">
+        <img src="images/paper-dfpr-cover.webp" alt="First page of the DFPR paper" width="600" height="776" loading="lazy" decoding="async">
+      </a>
+      <div class="pub-meta">
+        <p class="t"><a href="https://openreview.net/forum?id=3ApAMVloY5">DFPR: Dynamic Fine-Grained Perceptive Bidirectional Image-Text Retrieval</a></p>
+        <p class="a">Mengru Ma, <b>Shuo Liang</b>, Wenping Ma, Lingling Li, Xu Liu, Xu Cong</p>
+        <p class="v">ACM Multimedia 2026<span class="st">first student author</span></p>
+        <p class="links"><a href="https://openreview.net/forum?id=3ApAMVloY5">OpenReview</a></p>
+      </div>
       <p class="gist">Parameter-efficient fine-tuning for remote-sensing image–text retrieval: mixture-of-experts routing over caption semantics, spectral graph filtering to suppress background clutter, and adaptive reweighting of the two retrieval directions. Best mean recall among PEFT methods on three benchmarks. I designed and ran the experiments and wrote the paper.</p>
-      <p class="links"><a href="https://openreview.net/forum?id=3ApAMVloY5">OpenReview</a></p>
     </article>
   </section>
 
