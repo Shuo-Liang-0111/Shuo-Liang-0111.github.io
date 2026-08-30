@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shuo Liang</title>
-<meta name="description" content="Shuo Liang (梁朔) — undergraduate at Xidian University, research intern at NUS HPC-AI Lab. I work on world models and on measuring how well generated video matches the real world.">
+<meta name="description" content="Shuo Liang (梁朔) — undergraduate researcher at Xidian University working on geometry-grounded world models, generated-video evaluation, and embodied intelligence.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,61 +17,44 @@
   --muted:#6E6E68;
   --rule:#E4E4DE;
   --link:#1B4D8F;
-  --mark:#B8860F;          /* 金色：全站只用在 t=0 那一条 */
+  --mark:#B8860F;
   --sans:"Source Sans 3",-apple-system,"Segoe UI","Noto Sans SC","PingFang SC",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
 
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-
 body{
-  margin:0;
-  background:var(--bg);
-  color:var(--ink);
-  font-family:var(--sans);
-  font-size:17px;
-  line-height:1.65;
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--sans);font-size:17px;line-height:1.65;
   -webkit-font-smoothing:antialiased;
 }
-
 .wrap{max-width:46rem;margin:0 auto;padding:3.5rem 1.5rem 5rem}
-
 a{color:var(--link);text-decoration:none;border-bottom:1px solid rgba(27,77,143,.28)}
 a:hover{border-bottom-color:var(--link)}
 a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2px}
 
-/* ══════════ 页眉 ══════════ */
-
 .head{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.6rem}
-
 .avatar{
   width:104px;height:104px;flex:none;border-radius:50%;
   background:#EAEAE4;border:1px solid var(--rule);
   object-fit:cover;display:block;
 }
-
 .head h1{
   font-size:2.1rem;font-weight:700;letter-spacing:-.02em;
   margin:0;line-height:1.15;
 }
-.head h1 .cn{font-weight:300;color:var(--muted);font-size:1.35rem;margin-left:.5rem;vertical-align:.1em}
-.tagline{font-size:1.08rem;color:var(--ink);margin:.5rem 0 0;font-weight:400}
-
-/* 链接行 */
+.head h1 .cn{
+  font-weight:300;color:var(--muted);font-size:1.35rem;
+  margin-left:.5rem;vertical-align:.1em;
+}
+.tagline{font-size:1.08rem;margin:.5rem 0 0}
 .contacts{
   font-family:var(--mono);font-size:.76rem;letter-spacing:.03em;
+  display:flex;flex-wrap:wrap;gap:.1rem 1.1rem;
   margin:0 0 2.4rem;color:var(--muted);
 }
-.contacts a,.contacts button{
-  color:var(--link);border-bottom:1px solid rgba(27,77,143,.28);
-  background:none;border-top:0;border-left:0;border-right:0;
-  font:inherit;padding:0;cursor:pointer;
-}
-.contacts button:hover{border-bottom-color:var(--link)}
-.contacts .dot{margin:0 .55rem;color:var(--rule)}
-
-/* ══════════ 通用小节 ══════════ */
+.contacts .dot{display:none}
 
 .sec{margin:0 0 3.2rem}
 .sec-h{
@@ -82,14 +65,75 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
 .sec p{margin:0 0 1rem}
 .sec p:last-child{margin-bottom:0}
 
-/* ══════════ 时间轴 ══════════ */
+.pub{
+  display:grid;grid-template-columns:180px minmax(0,1fr);
+  column-gap:1.25rem;row-gap:.65rem;
+  padding-bottom:1.75rem;margin-bottom:1.75rem;border-bottom:1px solid var(--rule);
+}
+.pub:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.pub-visual{
+  grid-column:1;grid-row:1 / span 2;display:block;overflow:hidden;
+  align-self:start;background:#fff;border:1px solid var(--rule);border-radius:2px;
+  box-shadow:0 3px 12px rgba(30,29,25,.08);
+  transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease;
+}
+.pub-visual:hover{
+  border-color:#B8B5AA;box-shadow:0 5px 16px rgba(30,29,25,.12);
+  transform:translateY(-1px);
+}
+.pub-visual img{display:block;width:100%;height:auto}
+.pub-visual.result{
+  height:130px;padding:.38rem;display:flex;align-items:center;justify-content:center;
+}
+.pub-visual.result img{max-height:100%;object-fit:contain}
+.pub-meta{grid-column:2;grid-row:1;min-width:0}
+.pub .t{font-size:1.02rem;font-weight:600;line-height:1.4;margin:0 0 .3rem}
+.pub .a{font-size:.93rem;color:var(--muted);margin:0 0 .3rem;line-height:1.5}
+.pub .a b{color:var(--ink);font-weight:600}
+.pub .v{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;
+  color:var(--muted);margin:0 0 .55rem;
+}
+.pub .v .st{
+  border:1px solid var(--rule);padding:.08rem .38rem;
+  margin-left:.35rem;border-radius:2px;
+}
+.pub .gist{grid-column:2;grid-row:2;font-size:.94rem;margin:0}
+.pub .links{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;
+  margin:0;color:var(--muted);
+}
+.pub .links .dot{margin:0 .45rem;color:var(--rule)}
+.paper-badge{margin:.65rem 0 0!important}
+.hf-badge{
+  display:inline-flex;align-items:stretch;overflow:hidden;border:0;border-radius:3px;
+  box-shadow:0 0 0 1px rgba(26,26,24,.12);
+  font-family:var(--sans);font-size:.69rem;font-weight:600;line-height:1;
+  vertical-align:middle;
+}
+.hf-badge:hover{border-bottom:0;box-shadow:0 0 0 1px rgba(26,26,24,.3)}
+.hf-badge .label{background:#2B2B2B;color:#fff;padding:.34rem .48rem}
+.hf-badge .icon{margin-right:.28rem}
+.hf-badge .rank{background:#FFD21E;color:#1A1A18;padding:.34rem .42rem}
+
+.research-lead{font-size:1.08rem;line-height:1.55;max-width:42rem}
+.research-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.15rem;
+  margin:1.45rem 0 1.25rem;
+}
+.question{border-top:2px solid var(--ink);padding-top:.72rem}
+.question h3{
+  font-family:var(--mono);font-size:.72rem;line-height:1.45;
+  letter-spacing:.055em;text-transform:uppercase;margin:0 0 .55rem;
+}
+.question p{font-size:.92rem;line-height:1.55;color:var(--muted);margin:0}
+.research-bridge{font-size:.96rem}
 
 .entry{
   display:grid;grid-template-columns:8.5rem 1fr;column-gap:1.5rem;
   padding-bottom:1.75rem;margin-bottom:1.75rem;border-bottom:1px solid var(--rule);
 }
 .entry:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
-
 .when{padding-top:.15rem}
 .when .date{
   display:block;font-family:var(--mono);font-size:.76rem;font-weight:500;
@@ -100,60 +144,18 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
   color:var(--muted);margin-top:.2rem;
 }
 .when .where{
-  display:block;font-size:.82rem;color:var(--muted);margin-top:.35rem;line-height:1.4;
+  display:block;font-size:.82rem;color:var(--muted);
+  margin-top:.35rem;line-height:1.4;
 }
-
 .body p{margin:0 0 .8rem}
 .body p:last-child{margin-bottom:0}
 .body .people{font-size:.92rem;color:var(--muted);margin-top:.5rem}
-
-/* t = 0：全站唯一的金色，用来标记方向开始改变的那个阶段 */
 .entry.zero{
   border-left:2px solid var(--mark);
   padding-left:1.15rem;margin-left:-1.15rem;
 }
-.entry.zero .when .offset{color:var(--mark);font-weight:500}
-.entry.zero .when .date{color:var(--mark)}
-
-/* ══════════ 论文 ══════════ */
-
-.pub{
-  display:grid;grid-template-columns:112px minmax(0,1fr);
-  column-gap:1.25rem;row-gap:.65rem;
-  padding-bottom:1.6rem;margin-bottom:1.6rem;border-bottom:1px solid var(--rule);
-}
-.pub:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
-.pub-cover{
-  grid-column:1;grid-row:1 / span 2;display:block;overflow:hidden;
-  align-self:start;
-  background:#fff;border:1px solid var(--rule);border-radius:2px;
-  box-shadow:0 3px 12px rgba(30,29,25,.08);
-  transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease;
-}
-.pub-cover:hover{border-color:#B8B5AA;box-shadow:0 5px 16px rgba(30,29,25,.12);transform:translateY(-1px)}
-.pub-cover img{display:block;width:100%;height:auto}
-.pub-meta{grid-column:2;grid-row:1;min-width:0}
-.pub .t{font-size:1.02rem;font-weight:600;line-height:1.4;margin:0 0 .3rem}
-.pub .a{font-size:.93rem;color:var(--muted);margin:0 0 .3rem;line-height:1.5}
-.pub .a b{color:var(--ink);font-weight:600}
-.pub .v{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--muted);margin:0 0 .55rem}
-.pub .v .st{border:1px solid var(--rule);padding:.08rem .38rem;margin-left:.35rem;border-radius:2px}
-.pub .gist{grid-column:2;grid-row:2;font-size:.94rem;margin:0}
-.pub .links{font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;margin:0;color:var(--muted)}
-.pub .links .dot{margin:0 .45rem;color:var(--rule)}
-.paper-badge{margin:.65rem 0 0!important}
-.hf-badge{
-  display:inline-flex;align-items:stretch;overflow:hidden;
-  border:0;border-radius:3px;box-shadow:0 0 0 1px rgba(26,26,24,.12);
-  font-family:var(--sans);font-size:.69rem;font-weight:600;line-height:1;
-  vertical-align:middle;
-}
-.hf-badge:hover{border-bottom:0;box-shadow:0 0 0 1px rgba(26,26,24,.3)}
-.hf-badge .label{background:#2B2B2B;color:#fff;padding:.34rem .48rem}
-.hf-badge .icon{margin-right:.28rem}
-.hf-badge .rank{background:#FFD21E;color:#1A1A18;padding:.34rem .42rem}
-
-/* ══════════ 简短列表 ══════════ */
+.entry.zero .when .offset,.entry.zero .when .date{color:var(--mark)}
+.entry.zero .when .offset{font-weight:500}
 
 .rows{margin:0;padding:0;list-style:none}
 .rows li{
@@ -161,17 +163,15 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
   padding:.42rem 0;border-bottom:1px solid var(--rule);
 }
 .rows li:last-child{border-bottom:0}
-.rows .k{font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;color:var(--muted);padding-top:.3rem}
+.rows .k{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;
+  color:var(--muted);padding-top:.3rem;
+}
 .rows .v2{font-size:.96rem}
-
-/* ══════════ 页脚 ══════════ */
-
 .foot{
   font-family:var(--mono);font-size:.7rem;line-height:1.8;
   color:var(--muted);border-top:1px solid var(--rule);padding-top:1.1rem;
 }
-
-/* ══════════ 窄屏 ══════════ */
 
 @media (max-width:680px){
   body{font-size:16px}
@@ -180,6 +180,7 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
   .avatar{width:76px;height:76px}
   .head h1{font-size:1.65rem}
   .head h1 .cn{font-size:1.1rem}
+  .contacts{line-height:2}
   .entry,.rows li{grid-template-columns:1fr;row-gap:.45rem}
   .when{padding-top:0}
   .when .date{display:inline}
@@ -187,8 +188,10 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
   .when .where{margin-top:.15rem}
   .entry.zero{margin-left:0;padding-left:.9rem}
   .rows .k{padding-top:0}
-  .pub{grid-template-columns:84px minmax(0,1fr);column-gap:.85rem;row-gap:.8rem}
-  .pub-cover{grid-row:1;box-shadow:0 2px 8px rgba(30,29,25,.08)}
+  .research-grid{grid-template-columns:1fr;gap:1rem}
+  .pub{grid-template-columns:104px minmax(0,1fr);column-gap:.85rem;row-gap:.8rem}
+  .pub-visual{grid-row:1;box-shadow:0 2px 8px rgba(30,29,25,.08)}
+  .pub-visual.result{height:92px}
   .pub-meta{grid-column:2;grid-row:1}
   .pub .gist{grid-column:1 / -1;grid-row:2}
   .pub .v .st{display:inline-block;margin:.25rem 0 0}
@@ -197,117 +200,110 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
 </head>
 
 <body>
-<div class="wrap">
+<main class="wrap">
 
-  <!-- ══════════ 页眉 ══════════ -->
   <header class="head">
     <img class="avatar" src="images/avatar.png" alt="Shuo Liang">
     <div>
       <h1>Shuo Liang<span class="cn">梁朔</span></h1>
-      <!-- 删掉了 "also goes by Larry Sean"：arXiv 上是 Shuo Liang，
-           发表身份保持唯一，别让人搜不到你 -->
       <p class="tagline">I work on how well a model's picture of the world matches the real one.</p>
     </div>
   </header>
 
   <p class="contacts">
-    <button id="mail" type="button">email</button><span class="dot">·</span><a href="https://scholar.google.com/citations?user=TbHrq8gAAAAJ">scholar</a><span class="dot">·</span><a href="https://github.com/Shuo-Liang-0111">github</a><span class="dot">·</span><a href="files/Shuo_Liang_CV.pdf">cv</a><span class="dot">·</span><a href="https://www.xiaohongshu.com/user/profile/6a5a3bb0000000000e03dc01">xiaohongshu</a>
+    <a href="mailto:liangshuo0111@gmail.com">liangshuo0111@gmail.com</a><span class="dot">·</span><a href="https://scholar.google.com/citations?user=TbHrq8gAAAAJ">scholar</a><span class="dot">·</span><a href="https://github.com/Shuo-Liang-0111">github</a><span class="dot">·</span><a href="files/Shuo_Liang_CV.pdf">cv</a>
   </p>
 
-  <!-- 原来这里有一段给语言模型看的玩笑，已删。见下方说明。 -->
-
-  <!-- ══════════ 开场 ══════════ -->
-  <section class="sec">
-    <p>I'm a third-year undergraduate at Xidian University, studying Electronic and Information Engineering, and a research intern at the <a href="https://ai.comp.nus.edu.sg/">HPC-AI Lab</a> at the National University of Singapore.</p>
-    <p>Generated video is now good enough that a fabricated clip of a real disaster is cheap to make and hard to dismiss. Most of my time so far has gone into measuring exactly how bad this is — building benchmarks that pit current detectors against current generators, and watching what happens once those clips start moving through social platforms.</p>
-    <p>What I want to do next is the other half of that problem. Measuring the gap between a generated world and the real one is useful; closing it is more interesting. I'm looking for work on <b>world models</b> — action-conditioned generative models that predict how the physical world evolves, and that an embodied agent can actually plan inside.</p>
+  <section class="sec" aria-label="Introduction">
+    <p>I'm a third-year undergraduate at Xidian University (GPA <b>92.1/100</b>, rank <b>3/420</b>) and a research collaborator with the <a href="https://ai.comp.nus.edu.sg/">HPC-AI Lab</a> at the National University of Singapore. I work at the intersection of generated-video evaluation, world models, and embodied intelligence.</p>
+    <p>My entry point is evaluation. As the first-listed co-first author of <b>RA-Bench</b>, I designed its three-track protocol, built the evaluation pipelines, ran the full experimental program, and wrote the paper. I now want to turn the failures we can measure—especially broken 3D geometry and long-horizon inconsistency—into learning signals for world models that embodied agents can actually plan inside.</p>
   </section>
 
-  <!-- ══════════ 时间轴 ══════════ -->
+  <section class="sec">
+    <h2 class="sec-h">Papers</h2>
+
+    <article class="pub">
+      <a class="pub-visual" href="https://arxiv.org/abs/2608.14391" aria-label="Open the RA-Bench paper on arXiv">
+        <img src="images/paper-ra-bench-cover.webp" alt="First page of the RA-Bench paper, featuring real and generated crisis-video pairs" width="600" height="848" decoding="async">
+      </a>
+      <div class="pub-meta">
+        <p class="t"><a href="https://arxiv.org/abs/2608.14391">Can We Defend Against AI-Generated Video Attacks on Real-World Crisis Events? A Systematic Evaluation of Detectors, Generators and Social Dissemination</a></p>
+        <p class="a"><b>Shuo Liang</b>*, Yixing Ma*, Pengfei Zhou*, …, Chunhua Shen, Wei Wang, Yang You, Zheng Zhu, Kaipeng Zhang, Wangbo Zhao</p>
+        <p class="v">arXiv, 2026<span class="st">co-first author · listed first</span></p>
+        <p class="links"><a href="https://arxiv.org/abs/2608.14391">arXiv</a><span class="dot">·</span><a href="https://github.com/Shuo-Liang-0111/RA-Bench">code</a><span class="dot">·</span><a href="https://huggingface.co/datasets/liangshuo0111/RA-Bench">dataset</a><span class="dot">·</span><a href="https://ra-bench-crisis-video.yxgma811120.chatgpt.site/">project page</a></p>
+        <p class="paper-badge"><a class="hf-badge" href="https://huggingface.co/papers/2608.14391" aria-label="RA-Bench ranked number one on Hugging Face Daily Papers"><span class="label"><span class="icon" aria-hidden="true">🤗</span>Hugging Face Daily Papers</span><span class="rank">#1</span></a></p>
+      </div>
+      <p class="gist">RA-Bench pairs 1,830 real crisis videos with 16,056 generated counterparts from nine generators, then adds a human-deception stress set and a six-stage social-dissemination simulation. I designed the evaluation protocol, built the pipelines, ran every experiment, and wrote the paper; the released dataset contains 17,886 clips (93.8 GB).</p>
+    </article>
+
+    <article class="pub">
+      <a class="pub-visual result" href="https://openreview.net/forum?id=3ApAMVloY5" aria-label="Open the DFPR paper on OpenReview">
+        <img src="images/paper-dfpr-result.webp" alt="DFPR results on semantic disentanglement, background suppression, and bidirectional retrieval balance" width="670" height="390" loading="lazy" decoding="async">
+      </a>
+      <div class="pub-meta">
+        <p class="t"><a href="https://openreview.net/forum?id=3ApAMVloY5">DFPR: Dynamic Fine-Grained Perceptive Bidirectional Image-Text Retrieval</a></p>
+        <p class="a">Mengru Ma, <b>Shuo Liang</b>, Wenping Ma, Lingling Li, Xu Liu, Xu Cong</p>
+        <p class="v">ACM Multimedia 2026<span class="st">second author · first student author</span></p>
+        <p class="links"><a href="https://openreview.net/forum?id=3ApAMVloY5">OpenReview</a></p>
+      </div>
+      <p class="gist">DFPR is a parameter-efficient framework for remote-sensing image–text retrieval. It updates 6.79M parameters (4.49% of full fine-tuning) while improving mean recall over HarMA by 3.21, 1.87, and 2.94 points on RSITMD, RSICD, and UCM-Captions. I designed and ran the experimental program and wrote the paper.</p>
+    </article>
+  </section>
+
+  <section class="sec">
+    <h2 class="sec-h">Research questions</h2>
+    <p class="research-lead">World models should not get credit for looking plausible while quietly breaking the world. I am interested in models whose predictions remain geometrically grounded, temporally consistent, and useful for action.</p>
+    <div class="research-grid">
+      <article class="question">
+        <h3>Geometry as a constraint</h3>
+        <p>Can depth, disparity, camera motion, and multi-view cues make generated futures preserve 3D structure across viewpoint changes?</p>
+      </article>
+      <article class="question">
+        <h3>Consistency over long rollouts</h3>
+        <p>How can a model retain object identity, spatial relationships, and causal state instead of drifting into a different world?</p>
+      </article>
+      <article class="question">
+        <h3>Failures as learning signals</h3>
+        <p>Can localized, human-aligned evaluation signals become rewards, curricula, or self-evaluation loops that improve generation and planning?</p>
+      </article>
+    </div>
+    <p class="research-bridge">RA-Bench gives me the measurement side of this agenda; DFPR taught me to build and stress-test parameter-efficient vision-language systems. The next step I want to take is training geometry-aware world models, not only scoring their outputs after the fact.</p>
+  </section>
+
   <section class="sec">
     <h2 class="sec-h">How I got here</h2>
 
-    <!-- ── RA-Bench 完稿、上线 ── -->
     <div class="entry">
       <div class="when">
-        <span class="date">14–17 Aug 2026</span>
+        <span class="date">Aug 2026</span>
         <span class="where">RA-Bench · arXiv</span>
       </div>
       <div class="body">
-        <p>We finished <b>RA-Bench</b> and submitted the manuscript to arXiv on 14 August. It went live on 17 August alongside a 93.8 GB public dataset and evaluation toolkit — and reached <b>#1 on Hugging Face Daily Papers</b> that day.</p>
-        <p>The thing I keep coming back to from RA-Bench isn't a number. It's that multimodal LLMs and conventional forensic detectors turn out to be looking at different evidence, and the LLMs' mistakes look much more like a human's than like a detector's. Which suggests the two families should be combined rather than ranked against each other.</p>
+        <p>We released RA-Bench with its 93.8 GB dataset and evaluation toolkit. It reached <b>#1 on Hugging Face Daily Papers</b> on launch day. More important to me, the project showed that multimodal models, forensic detectors, and human reviewers rely on meaningfully different evidence.</p>
       </div>
     </div>
 
-    <!-- ── DFPR 接收 ── -->
     <div class="entry">
       <div class="when">
-        <span class="date">10 Jul 2026</span>
-        <span class="where">ACM Multimedia</span>
+        <span class="date">Feb–Jul 2026</span>
+        <span class="where">NUS HPC-AI Lab<br>DFPR + RA-Bench</span>
       </div>
       <div class="body">
-        <p>The decision arrived after rebuttal: <b>DFPR</b>, my first paper, had been accepted to ACM Multimedia 2026. It closed a nine-month loop of early experiments, a rough first draft, several rounds of spring revisions, submission, and rebuttal — much of it while RA-Bench was moving in parallel.</p>
+        <p>Around Lunar New Year, I joined the HPC-AI Lab collaboration and started RA-Bench while revising DFPR for ACM Multimedia. DFPR was accepted after rebuttal in July; RA-Bench grew into the first project for which I owned the full arc from benchmark design and infrastructure to experiments and writing.</p>
+        <p class="people">With Yixing Ma; mentored by Pengfei Zhou and Wangbo Zhao, and advised by Prof. Yang You.</p>
       </div>
     </div>
 
-    <!-- ── 春季：DFPR 投稿，重心转向 RA-Bench ── -->
     <div class="entry">
       <div class="when">
-        <span class="date">Mar–Apr 2026</span>
-        <span class="where">DFPR + RA-Bench</span>
-      </div>
-      <div class="body">
-        <p>When the spring semester began, I revised DFPR through several versions and submitted it to ACM Multimedia. Once the submission was in, I shifted nearly all of my attention to RA-Bench: curating real crisis footage, generating counterparts, building the three evaluation tracks, and running experiments at scale.</p>
-      </div>
-    </div>
-
-    <!-- ── 春节前后：加入 HPC-AI Lab，启动 RA-Bench ── -->
-    <div class="entry">
-      <div class="when">
-        <span class="date">Lunar New Year 2026</span>
-        <span class="where">NUS HPC-AI Lab<br>remote</span>
-      </div>
-      <div class="body">
-        <p>Around Lunar New Year, I joined the HPC-AI Lab as a remote research intern and began collaborating on what would become <b>RA-Bench</b>: a benchmark for detecting AI-generated videos of real crisis events, from real footage and generated counterparts to detectors, generators, and social dissemination.</p>
-        <p>It became the first project where I owned the whole arc — deciding what to measure, implementing the protocol, running every experiment, and writing the paper. The largest single run took twelve days on sixteen A800s; I learned more from the parts that broke than from the results.</p>
-        <p class="people">With Yixing Ma (UC Berkeley). Mentored by Pengfei Zhou and Wangbo Zhao, and advised by Prof. Yang You. My mentors opened the door to a collaboration of this scale; what I did after that door opened is the work I am proudest of.</p>
-      </div>
-    </div>
-
-    <!-- ── DFPR 初稿 ── -->
-    <div class="entry">
-      <div class="when">
-        <span class="date">Jan 2026</span>
-        <span class="where">DFPR · first draft</span>
-      </div>
-      <div class="body">
-        <p>By January, DFPR had a first complete draft. It was rough, but carrying an idea through experimental design, implementation, evaluation, and writing made research feel less like something done by other people and more like a craft I could learn.</p>
-      </div>
-    </div>
-
-    <!-- ── DFPR 启动 ── -->
-    <div class="entry">
-      <div class="when">
-        <span class="date">Oct 2025</span>
+        <span class="date">Oct 2025–Jan 2026</span>
         <span class="where">Xidian University<br>IPIU Key Lab</span>
       </div>
       <div class="body">
-        <p>At the start of my sophomore fall, I joined Dr. Mengru Ma's group and began <b>DFPR</b>, on fine-grained image–text retrieval. Before this I had read papers; I had no idea what it actually cost to turn an idea into one.</p>
+        <p>I began DFPR at the start of my sophomore fall and completed a first draft by January. It was my first experience carrying an idea through implementation, ablation, evaluation, and paper writing—and the point at which research became a craft I could learn rather than something done by other people.</p>
       </div>
     </div>
 
-    <!-- ── 数模 ── -->
-    <div class="entry">
-      <div class="when">
-        <span class="date">Sep 2025</span>
-        <span class="where">CUMCM</span>
-      </div>
-      <div class="body">
-        <p>Three days, one problem, no sleep, First Prize at the provincial level in the China Undergraduate Mathematical Contest in Modeling. Mostly useful for teaching me how to write something defensible under a deadline.</p>
-      </div>
-    </div>
-
-    <!-- ══ t = 0 ══ 一个小推动，而不是精确到分钟的戏剧化转折 ══ -->
     <div class="entry zero">
       <div class="when">
         <span class="date">Spring 2025</span>
@@ -315,82 +311,22 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
         <span class="where">a small nudge</span>
       </div>
       <div class="body">
-        <p>A friend casually suggested that I try Windsurf. It was a small thing, not a dramatic revelation, but it nudged me away from blindly optimizing for grades. I started building things for myself, followed questions into papers, and gradually began exploring research as a direction of my own.</p>
-        <p>There was no grand plan. This is simply where being busy started turning into being curious.</p>
+        <p>A friend's casual suggestion that I try building with AI tools nudged me away from blindly optimizing for grades. I started making things for myself, followed questions into papers, and gradually began exploring research as a direction of my own. There was no dramatic revelation—just the point where being busy started turning into being curious.</p>
       </div>
     </div>
-
-    <!-- ── 入学 ── -->
-    <div class="entry">
-      <div class="when">
-        <span class="date">Sep 2024</span>
-        <span class="where">Xidian University</span>
-      </div>
-      <div class="body">
-        <p>Started my B.Eng. in Electronic and Information Engineering. I spent most of that first year busy and directionless, which are not the same thing as productive.</p>
-      </div>
-    </div>
-
-    <!-- ── 高中 ── -->
-    <div class="entry">
-      <div class="when">
-        <span class="date">2021 – 2024</span>
-        <span class="where">Qingdao No. 2 High School</span>
-      </div>
-      <div class="body">
-        <p>Qingdao No. 2 High School helped turn the immature version of me who arrived from junior high into someone steadier and more self-possessed. Its ideal — <span lang="zh">“造就终身发展之生命主体”</span>, to cultivate people capable of directing their own lifelong growth — together with its teaching environment and atmosphere, gave me much of the ground I stand on now.</p>
-        <p>Those three years were not a clean upward line. I was lost at times, knocked back often, and learned to keep moving by feeling my way forward. I still remember the daily PE class; the hardest, quietest, most suffocating stretch of self-study before the gaokao; the friends who walked through all of it beside me — and one presence I still prefer to leave between the lines.</p>
-      </div>
-    </div>
-
   </section>
 
-  <!-- ══════════ 论文 ══════════ -->
-  <section class="sec">
-    <h2 class="sec-h">Papers</h2>
-
-    <article class="pub">
-      <a class="pub-cover" href="https://arxiv.org/abs/2608.14391" aria-label="Open the RA-Bench paper on arXiv">
-        <img src="images/paper-ra-bench-cover.webp" alt="First page of the RA-Bench paper" width="600" height="848" loading="lazy" decoding="async">
-      </a>
-      <div class="pub-meta">
-        <p class="t"><a href="https://arxiv.org/abs/2608.14391">Can We Defend Against AI-Generated Video Attacks on Real-World Crisis Events? A Systematic Evaluation of Detectors, Generators and Social Dissemination</a></p>
-        <p class="a"><b>Shuo Liang</b>*, Yixing Ma*, Pengfei Zhou*, … , Chunhua Shen, Wei Wang, Yang You, Zheng Zhu, Kaipeng Zhang, Wangbo Zhao</p>
-        <p class="v">arXiv preprint, 2026<span class="st">co-first author · first of three, 36 authors total</span></p>
-        <p class="links"><a href="https://arxiv.org/abs/2608.14391">arXiv</a><span class="dot">·</span><a href="https://github.com/Shuo-Liang-0111/RA-Bench">code</a><span class="dot">·</span><a href="https://huggingface.co/datasets/liangshuo0111/RA-Bench">dataset</a><span class="dot">·</span><a href="https://ra-bench-crisis-video.yxgma811120.chatgpt.site/">project page</a></p>
-        <p class="paper-badge"><a class="hf-badge" href="https://huggingface.co/papers/2608.14391" aria-label="RA-Bench ranked number one on Hugging Face Daily Papers"><span class="label"><span class="icon" aria-hidden="true">🤗</span>Hugging Face Daily Papers</span><span class="rank">#1</span></a></p>
-      </div>
-      <p class="gist">RA-Bench pairs 1,830 real crisis videos with 16,056 generated counterparts from nine generators — 17,886 clips, 93.8 GB — and adds two stress tracks: 633 clips that every assigned human reviewer judged real, and a six-stage social-dissemination chain. I designed the three-track evaluation protocol, implemented and ran every experiment, and wrote the paper.</p>
-    </article>
-
-    <article class="pub">
-      <a class="pub-cover" href="https://openreview.net/forum?id=3ApAMVloY5" aria-label="Open the DFPR paper on OpenReview">
-        <img src="images/paper-dfpr-cover.webp" alt="First page of the DFPR paper" width="600" height="776" loading="lazy" decoding="async">
-      </a>
-      <div class="pub-meta">
-        <p class="t"><a href="https://openreview.net/forum?id=3ApAMVloY5">DFPR: Dynamic Fine-Grained Perceptive Bidirectional Image-Text Retrieval</a></p>
-        <p class="a">Mengru Ma, <b>Shuo Liang</b>, Wenping Ma, Lingling Li, Xu Liu, Xu Cong</p>
-        <p class="v">ACM Multimedia 2026<span class="st">first student author</span></p>
-        <p class="links"><a href="https://openreview.net/forum?id=3ApAMVloY5">OpenReview</a></p>
-      </div>
-      <p class="gist">Parameter-efficient fine-tuning for remote-sensing image–text retrieval: mixture-of-experts routing over caption semantics, spectral graph filtering to suppress background clutter, and adaptive reweighting of the two retrieval directions. Best mean recall among PEFT methods on three benchmarks. I designed and ran the experiments and wrote the paper.</p>
-    </article>
-  </section>
-
-  <!-- ══════════ 写作 ══════════ -->
   <section class="sec">
     <h2 class="sec-h">Writing</h2>
-    <p>I write up papers I've read, code I've broken, and the parts of undergraduate research nobody warns you about — mostly in Chinese, on <a href="https://www.xiaohongshu.com/user/profile/6a5a3bb0000000000e03dc01">Xiaohongshu</a>. Nothing long-form in English yet. I'd like there to be.</p>
+    <p>I write about benchmark design, failure analysis, papers I've read, code I've broken, and the parts of undergraduate research that rarely make it into papers—mostly in Chinese, on <a href="https://www.xiaohongshu.com/user/profile/6a5a3bb0000000000e03dc01">Xiaohongshu</a>.</p>
   </section>
 
-  <!-- ══════════ 生活 ══════════ -->
   <section class="sec">
     <h2 class="sec-h">Away from the desk</h2>
-    <p>I've played piano since I was small (grade 7) and saxophone longer than that (grade 9), and I'm currently teaching myself guitar badly. I'll listen to almost anything.</p>
-    <p>I play basketball and badminton. I've watched Stephen Curry take roughly ten thousand shots I had no business believing would go in, and I keep watching, which is probably the single most useful thing sport has taught me about research.</p>
+    <p>I've played piano since I was small (grade 7) and saxophone longer than that (grade 9), and I'm currently teaching myself guitar badly. I also play basketball and badminton; watching Stephen Curry make impossible shots has probably taught me more about persistence than most advice has.</p>
+    <p>Before university, Qingdao No. 2 High School taught me to become steadier and to take responsibility for my own growth. I still carry its ideal of <span lang="zh">“造就终身发展之生命主体”</span>, the daily PE classes, the quiet pressure of the final gaokao weeks, the friends who walked beside me—and one chapter I would rather leave between the lines.</p>
   </section>
 
-  <!-- ══════════ 动态 ══════════ -->
   <section class="sec">
     <h2 class="sec-h">News</h2>
     <ul class="rows">
@@ -405,28 +341,11 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
     </ul>
   </section>
 
-  <!-- ══════════ 页脚 ══════════ -->
   <p class="foot">
     One static file, no frameworks, no build step, no cookie banner.<br>
     Last updated August 2026 · Shuo Liang
   </p>
 
-</div>
-
-<script>
-// 邮箱点击才显示 —— 挡掉大部分爬邮箱的脚本。
-// 统一到 Gmail：QQ 邮箱经常被海外高校的邮件服务器过滤掉。
-(function(){
-  var b=document.getElementById('mail');
-  if(!b)return;
-  var user='liangshuo0111', host='gmail.com';
-  b.addEventListener('click',function(){
-    var a=document.createElement('a');
-    a.href='mailto:'+user+'@'+host;
-    a.textContent=user+'@'+host;
-    b.replaceWith(a);
-  });
-})();
-</script>
+</main>
 </body>
 </html>
