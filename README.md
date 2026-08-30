@@ -1,4 +1,4 @@
-# 24029100313.github.io
+# Shuo-Liang-0111.github.io
 
 个人学术主页。纯静态，零框架，零构建步骤。
 
@@ -15,8 +15,8 @@ files/Shuo_Liang_CV.pdf     # CV，页眉的 cv 链接指向这里
 
 ## 部署
 
-仓库名必须是 `24029100313.github.io`，然后 Settings → Pages → Source 选 `main` 分支根目录。
-几分钟后访问 https://24029100313.github.io
+仓库名必须是 `Shuo-Liang-0111.github.io`，然后 Settings → Pages → Source 选 `main` 分支根目录。
+几分钟后访问 https://shuo-liang-0111.github.io
 
 ## 怎么改内容
 
