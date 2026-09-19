@@ -17,7 +17,6 @@
   --muted:#6E6E68;
   --rule:#E4E4DE;
   --link:#1B4D8F;
-  --mark:#B8860F;
   --sans:"Source Sans 3",-apple-system,"Segoe UI","Noto Sans SC","PingFang SC",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
@@ -55,6 +54,17 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
   margin:0 0 2.4rem;color:var(--muted);
 }
 .contacts .dot{display:none}
+
+.proofline{
+  display:flex;flex-wrap:wrap;gap:.5rem .7rem;margin:1.15rem 0 0;
+}
+.proof{
+  display:inline-flex;align-items:center;gap:.38rem;
+  padding:.28rem .55rem;border:1px solid var(--rule);border-radius:999px;
+  background:#fff;font-family:var(--mono);font-size:.68rem;line-height:1.25;
+  letter-spacing:.025em;color:var(--muted);
+}
+.proof b{color:var(--ink);font-weight:500}
 
 .sec{margin:0 0 3.2rem}
 .sec-h{
@@ -129,33 +139,35 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
 .question p{font-size:.92rem;line-height:1.55;color:var(--muted);margin:0}
 .research-bridge{font-size:.96rem}
 
-.entry{
-  display:grid;grid-template-columns:8.5rem 1fr;column-gap:1.5rem;
-  padding-bottom:1.75rem;margin-bottom:1.75rem;border-bottom:1px solid var(--rule);
+.experience-list{position:relative;margin-top:.2rem}
+.experience-list::before{
+  content:"";position:absolute;left:35px;top:70px;bottom:70px;
+  width:1px;background:var(--rule);
 }
-.entry:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
-.when{padding-top:.15rem}
-.when .date{
-  display:block;font-family:var(--mono);font-size:.76rem;font-weight:500;
-  letter-spacing:.02em;color:var(--ink);
+.experience{
+  position:relative;display:grid;grid-template-columns:72px minmax(0,1fr) 8.8rem;
+  column-gap:1rem;align-items:start;padding:0 0 1.55rem;margin:0 0 1.55rem;
+  border-bottom:1px solid var(--rule);
 }
-.when .offset{
-  display:block;font-family:var(--mono);font-size:.68rem;
-  color:var(--muted);margin-top:.2rem;
+.experience:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.experience-mark{
+  position:relative;z-index:1;width:72px;height:72px;border:1px solid var(--rule);
+  border-radius:13px;background:#fff;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;box-shadow:0 3px 10px rgba(30,29,25,.055);
 }
-.when .where{
-  display:block;font-size:.82rem;color:var(--muted);
-  margin-top:.35rem;line-height:1.4;
+.experience-mark img{display:block;width:100%;height:100%;object-fit:contain}
+.experience-mark.xidian img{width:86%;height:86%}
+.experience-mark.qd2 img{width:88%;height:88%}
+.experience-main h3{font-size:1.02rem;line-height:1.35;margin:.05rem 0 .12rem}
+.experience-main .org{font-size:.88rem;color:var(--muted);margin:0 0 .5rem}
+.experience-main p{font-size:.94rem;line-height:1.55;margin:0 0 .48rem}
+.experience-main p:last-child{margin-bottom:0}
+.experience-main .people{font-size:.86rem;color:var(--muted)}
+.experience-date{
+  font-family:var(--mono);font-size:.7rem;line-height:1.45;text-align:right;
+  color:var(--muted);letter-spacing:.015em;padding-top:.13rem;
 }
-.body p{margin:0 0 .8rem}
-.body p:last-child{margin-bottom:0}
-.body .people{font-size:.92rem;color:var(--muted);margin-top:.5rem}
-.entry.zero{
-  border-left:2px solid var(--mark);
-  padding-left:1.15rem;margin-left:-1.15rem;
-}
-.entry.zero .when .offset,.entry.zero .when .date{color:var(--mark)}
-.entry.zero .when .offset{font-weight:500}
+.experience-date b{display:block;color:var(--ink);font-weight:500}
 
 .rows{margin:0;padding:0;list-style:none}
 .rows li{
@@ -181,12 +193,13 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
   .head h1{font-size:1.65rem}
   .head h1 .cn{font-size:1.1rem}
   .contacts{line-height:2}
-  .entry,.rows li{grid-template-columns:1fr;row-gap:.45rem}
-  .when{padding-top:0}
-  .when .date{display:inline}
-  .when .offset{display:inline;margin-left:.6rem}
-  .when .where{margin-top:.15rem}
-  .entry.zero{margin-left:0;padding-left:.9rem}
+  .experience-list::before{left:27px;top:56px;bottom:56px}
+  .experience{grid-template-columns:56px minmax(0,1fr);column-gap:.85rem}
+  .experience-mark{width:56px;height:56px;border-radius:11px}
+  .experience-date{grid-column:2;text-align:left;padding:.08rem 0 .45rem;grid-row:1}
+  .experience-main{grid-column:2;grid-row:2}
+  .experience-mark{grid-column:1;grid-row:1 / span 2}
+  .rows li{grid-template-columns:1fr;row-gap:.28rem}
   .rows .k{padding-top:0}
   .research-grid{grid-template-columns:1fr;gap:1rem}
   .pub{grid-template-columns:104px minmax(0,1fr);column-gap:.85rem;row-gap:.8rem}
@@ -215,8 +228,22 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
   </p>
 
   <section class="sec" aria-label="Introduction">
-    <p>I'm a third-year undergraduate at Xidian University (GPA <b>92.1/100</b>, rank <b>3/420</b>) and a research collaborator with the <a href="https://ai.comp.nus.edu.sg/">HPC-AI Lab</a> at the National University of Singapore. I work at the intersection of generated-video evaluation, world models, and embodied intelligence.</p>
-    <p>My entry point is evaluation. As the first-listed co-first author of <b>RA-Bench</b>, I designed its three-track protocol, built the evaluation pipelines, ran the full experimental program, and wrote the paper. I now want to turn the failures we can measure—especially broken 3D geometry and long-horizon inconsistency—into learning signals for world models that embodied agents can actually plan inside.</p>
+    <p>I'm a third-year undergraduate at Xidian University (GPA <b>92.1/100</b>, rank <b>3/420</b>) and a research collaborator with the <a href="https://ai.comp.nus.edu.sg/">HPC-AI Lab</a> at the National University of Singapore. My recent work includes <b>DFPR</b> (ACM Multimedia 2026, <b>first student author</b>) and <b>RA-Bench</b> (first-listed co-first author).</p>
+    <p>My entry point is evaluation: understanding where visual systems fail, building evidence that survives stress tests, and turning those failures into better learning signals. I now want to study geometry-grounded world models that remain consistent over long rollouts and useful for embodied agents.</p>
+    <div class="proofline" aria-label="Selected research highlights">
+      <span class="proof"><b>ACM MM 2026</b> first student author</span>
+      <span class="proof"><b>RA-Bench</b> first-listed co-first author</span>
+      <span class="proof"><b>17,886</b> released video clips</span>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2 class="sec-h">Selected news</h2>
+    <ul class="rows">
+      <li><span class="k">Aug 2026</span><span class="v2">RA-Bench went live with its dataset and toolkit, reaching #1 on Hugging Face Daily Papers.</span></li>
+      <li><span class="k">Jul 2026</span><span class="v2">DFPR was accepted to ACM Multimedia 2026; I am the paper's first student author.</span></li>
+      <li><span class="k">2025</span><span class="v2">Received the National Scholarship from China's Ministry of Education.</span></li>
+    </ul>
   </section>
 
   <section class="sec">
@@ -243,11 +270,57 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
       <div class="pub-meta">
         <p class="t"><a href="https://openreview.net/forum?id=3ApAMVloY5">DFPR: Dynamic Fine-Grained Perceptive Bidirectional Image-Text Retrieval</a></p>
         <p class="a">Mengru Ma, <b>Shuo Liang</b>, Wenping Ma, Lingling Li, Xu Liu, Xu Cong</p>
-        <p class="v">ACM Multimedia 2026<span class="st">second author · first student author</span></p>
+        <p class="v">ACM Multimedia 2026<span class="st">first student author · second-listed</span></p>
         <p class="links"><a href="https://openreview.net/forum?id=3ApAMVloY5">OpenReview</a></p>
       </div>
-      <p class="gist">DFPR is a parameter-efficient framework for remote-sensing image–text retrieval. It updates 6.79M parameters (4.49% of full fine-tuning) while improving mean recall over HarMA by 3.21, 1.87, and 2.94 points on RSITMD, RSICD, and UCM-Captions. I designed and ran the experimental program and wrote the paper.</p>
+      <p class="gist">DFPR is a parameter-efficient framework for remote-sensing image–text retrieval. It updates 6.79M parameters (4.49% of full fine-tuning) while improving mean recall over HarMA by 3.21, 1.87, and 2.94 points on RSITMD, RSICD, and UCM-Captions. As the <b>first student author</b>, I worked across the full research cycle—from problem and method formulation to implementation, experiments, rebuttal, and paper writing.</p>
     </article>
+  </section>
+
+  <section class="sec">
+    <h2 class="sec-h">Experience</h2>
+    <div class="experience-list">
+      <article class="experience">
+        <div class="experience-mark nus"><img src="images/experience-nus.jpg" alt="National University of Singapore" width="180" height="242" loading="lazy"></div>
+        <div class="experience-main">
+          <h3>Research Collaborator</h3>
+          <p class="org"><a href="https://ai.comp.nus.edu.sg/">HPC-AI Lab, National University of Singapore</a> · Remote</p>
+          <p>Co-led RA-Bench from benchmark design to release: I designed the three-track evaluation protocol, built the distributed inference and video-data pipelines, ran the full experimental program, and wrote the paper.</p>
+          <p class="people">With Yixing Ma; mentored by Pengfei Zhou and Wangbo Zhao, and advised by Prof. Yang You.</p>
+        </div>
+        <div class="experience-date"><b>Feb 2026–present</b>Singapore · remote</div>
+      </article>
+
+      <article class="experience">
+        <div class="experience-mark"><img src="images/experience-ipiu.svg" alt="IPIU Key Laboratory at Xidian University" width="160" height="160" loading="lazy"></div>
+        <div class="experience-main">
+          <h3>Undergraduate Researcher</h3>
+          <p class="org">IPIU Key Laboratory (Ministry of Education), Xidian University</p>
+          <p>Developed DFPR as its <b>first student author</b>. I contributed from the original idea and method design through implementation, ablations, full-benchmark experiments, rebuttal, and paper writing.</p>
+        </div>
+        <div class="experience-date"><b>Oct 2025–present</b>Xi'an, China</div>
+      </article>
+
+      <article class="experience">
+        <div class="experience-mark xidian"><img src="images/experience-xidian.png" alt="Xidian University" width="160" height="160" loading="lazy"></div>
+        <div class="experience-main">
+          <h3>B.Eng. in Electronic Information Engineering</h3>
+          <p class="org">Xidian University · School of Electronic Engineering</p>
+          <p>GPA 92.1/100, ranked 3/420. Alongside coursework, I work with Chang Gao on OCDM waveform design for integrated sensing and communications; a manuscript is under review.</p>
+        </div>
+        <div class="experience-date"><b>Sep 2024–Jun 2028</b>expected</div>
+      </article>
+
+      <article class="experience">
+        <div class="experience-mark qd2"><img src="images/experience-qingdao-no2.png" alt="Qingdao No. 2 High School" width="160" height="160" loading="lazy"></div>
+        <div class="experience-main">
+          <h3>Student</h3>
+          <p class="org">Qingdao No. 2 High School</p>
+          <p>The place that helped me grow from an uncertain teenager into someone steadier. I still carry its ideal of becoming a person capable of lifelong growth—and the friends and quieter chapters that made those years matter.</p>
+        </div>
+        <div class="experience-date"><b>Sep 2021–Jun 2024</b>Qingdao, China</div>
+      </article>
+    </div>
   </section>
 
   <section class="sec">
@@ -271,52 +344,6 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
   </section>
 
   <section class="sec">
-    <h2 class="sec-h">How I got here</h2>
-
-    <div class="entry">
-      <div class="when">
-        <span class="date">Aug 2026</span>
-        <span class="where">RA-Bench · arXiv</span>
-      </div>
-      <div class="body">
-        <p>We released RA-Bench with its 93.8 GB dataset and evaluation toolkit. It reached <b>#1 on Hugging Face Daily Papers</b> on launch day. More important to me, the project showed that multimodal models, forensic detectors, and human reviewers rely on meaningfully different evidence.</p>
-      </div>
-    </div>
-
-    <div class="entry">
-      <div class="when">
-        <span class="date">Feb–Jul 2026</span>
-        <span class="where">NUS HPC-AI Lab<br>DFPR + RA-Bench</span>
-      </div>
-      <div class="body">
-        <p>Around Lunar New Year, I joined the HPC-AI Lab collaboration and started RA-Bench while revising DFPR for ACM Multimedia. DFPR was accepted after rebuttal in July; RA-Bench grew into the first project for which I owned the full arc from benchmark design and infrastructure to experiments and writing.</p>
-        <p class="people">With Yixing Ma; mentored by Pengfei Zhou and Wangbo Zhao, and advised by Prof. Yang You.</p>
-      </div>
-    </div>
-
-    <div class="entry">
-      <div class="when">
-        <span class="date">Oct 2025–Jan 2026</span>
-        <span class="where">Xidian University<br>IPIU Key Lab</span>
-      </div>
-      <div class="body">
-        <p>I began DFPR at the start of my sophomore fall and completed a first draft by January. It was my first experience carrying an idea through implementation, ablation, evaluation, and paper writing—and the point at which research became a craft I could learn rather than something done by other people.</p>
-      </div>
-    </div>
-
-    <div class="entry zero">
-      <div class="when">
-        <span class="date">Spring 2025</span>
-        <span class="offset">t = 0</span>
-        <span class="where">a small nudge</span>
-      </div>
-      <div class="body">
-        <p>A friend's casual suggestion that I try building with AI tools nudged me away from blindly optimizing for grades. I started making things for myself, followed questions into papers, and gradually began exploring research as a direction of my own. There was no dramatic revelation—just the point where being busy started turning into being curious.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec">
     <h2 class="sec-h">Writing</h2>
     <p>I write about benchmark design, failure analysis, papers I've read, code I've broken, and the parts of undergraduate research that rarely make it into papers—mostly in Chinese, on <a href="https://www.xiaohongshu.com/user/profile/6a5a3bb0000000000e03dc01">Xiaohongshu</a>.</p>
   </section>
@@ -324,26 +351,11 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
   <section class="sec">
     <h2 class="sec-h">Away from the desk</h2>
     <p>I've played piano since I was small (grade 7) and saxophone longer than that (grade 9), and I'm currently teaching myself guitar badly. I also play basketball and badminton; watching Stephen Curry make impossible shots has probably taught me more about persistence than most advice has.</p>
-    <p>Before university, Qingdao No. 2 High School taught me to become steadier and to take responsibility for my own growth. I still carry its ideal of <span lang="zh">“造就终身发展之生命主体”</span>, the daily PE classes, the quiet pressure of the final gaokao weeks, the friends who walked beside me—and one chapter I would rather leave between the lines.</p>
-  </section>
-
-  <section class="sec">
-    <h2 class="sec-h">News</h2>
-    <ul class="rows">
-      <li><span class="k">Aug 2026</span><span class="v2">RA-Bench went live on arXiv and reached #1 on Hugging Face Daily Papers.</span></li>
-      <li><span class="k">Jul 2026</span><span class="v2">DFPR was accepted to ACM Multimedia 2026.</span></li>
-      <li><span class="k">2025</span><span class="v2">National Scholarship, Ministry of Education</span></li>
-      <li><span class="k">2025</span><span class="v2">First Prize (provincial), China Undergraduate Mathematical Contest in Modeling</span></li>
-      <li><span class="k">2025</span><span class="v2">Second Prize (provincial), Chinese Mathematics Competitions</span></li>
-      <li><span class="k">standing</span><span class="v2">GPA 92.1 / 100 — ranked 3 / 420 in Electronic and Information Engineering</span></li>
-      <li><span class="k">english</span><span class="v2">CET-6: 621</span></li>
-      <li><span class="k">graduating</span><span class="v2">B.Eng. expected 2028</span></li>
-    </ul>
   </section>
 
   <p class="foot">
     One static file, no frameworks, no build step, no cookie banner.<br>
-    Last updated August 2026 · Shuo Liang
+    Last updated September 2026 · Shuo Liang
   </p>
 
 </main>

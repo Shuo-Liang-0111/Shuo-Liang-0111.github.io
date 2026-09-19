@@ -8,7 +8,8 @@
 index.html                  # 全部内容与样式都在这一个文件里
 images/avatar.png           # 头像，页面裁成圆形显示
 images/paper-ra-bench-cover.webp  # RA-Bench 论文首页缩略图
-images/paper-dfpr-cover.webp      # DFPR 论文首页缩略图
+images/paper-dfpr-result.webp     # DFPR 结果图缩略图
+images/experience-*               # Experience 区域的学校/实验室标识
 files/Shuo_Liang_CV.pdf     # CV，页眉的 cv 链接指向这里
 .nojekyll                   # 告诉 GitHub Pages 不要跑 Jekyll
 ```
@@ -20,18 +21,16 @@ files/Shuo_Liang_CV.pdf     # CV，页眉的 cv 链接指向这里
 
 ## 怎么改内容
 
-直接编辑 `index.html`。文件里有中文注释标出各个区块。常见改动：
+直接编辑 `index.html`，各个内容区块由对应的 `<section>` 标题区分。常见改动：
 
 - **加一篇论文** — 复制 `<article class="pub">` 整块，改标题、作者、venue
-- **加一条时间轴** — 复制 `<div class="entry">` 整块，按实际日历时间倒序插入；
-  `t = 0` 只用来标记 2025 年春天开始转向科研探索的阶段，不再计算分钟级偏移
+- **加一段经历** — 复制 `<article class="experience">` 整块，补充机构标识、职责、地点与日期
 - **换 CV** — 覆盖 `files/Shuo_Liang_CV.pdf` 即可，链接不用改
 
 ## 设计约定
 
-- 配色只有五个变量，全在 `:root` 里
-- **金色 `--mark` 全站只用在 t=0 那一条时间轴上**，不要复用
+- 配色变量集中在 `:root` 里
 - 字体：Newsreader 已弃用；当前用 Source Sans 3 + IBM Plex Mono，从 Google Fonts 加载
-- 邮箱做了点击才显示的处理，防爬虫；改邮箱要动页面底部的 `<script>`
+- 邮箱使用可直接点击的 `mailto:` 链接
 - **对外邮箱统一用 Gmail**：QQ 邮箱常被海外高校的邮件服务器过滤
 - **发表署名统一用 Shuo Liang**，与 arXiv 一致，不要出现别的英文名
