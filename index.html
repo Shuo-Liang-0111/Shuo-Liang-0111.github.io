@@ -65,12 +65,24 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
   letter-spacing:.025em;color:var(--muted);
 }
 .proof b{color:var(--ink);font-weight:500}
+.proof.primary{
+  background:#EDF3FA;border-color:#AFC6E2;color:#123D71;
+  box-shadow:inset 3px 0 0 var(--link);font-weight:600;
+}
+.proof.primary b{color:#123D71;font-weight:700}
 
 .sec{margin:0 0 3.2rem}
 .sec-h{
   font-family:var(--mono);font-size:.73rem;font-weight:500;
   letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
   margin:0 0 1.15rem;padding-bottom:.5rem;border-bottom:1px solid var(--rule);
+}
+.sec-h-news{display:flex;align-items:center;gap:.48rem}
+.news-emoji{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:1.34rem;height:1.34rem;border:1px solid var(--rule);border-radius:50%;
+  background:#fff;font-family:var(--sans);font-size:.76rem;line-height:1;
+  letter-spacing:0;text-transform:none;box-shadow:0 1px 4px rgba(30,29,25,.06);
 }
 .sec p{margin:0 0 1rem}
 .sec p:last-child{margin-bottom:0}
@@ -107,6 +119,12 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
 .pub .v .st{
   border:1px solid var(--rule);padding:.08rem .38rem;
   margin-left:.35rem;border-radius:2px;
+}
+.pub .v .venue{color:var(--ink);font-weight:600}
+.pub .v .st.lead-author{
+  color:#fff;background:var(--link);border-color:var(--link);
+  font-weight:600;text-transform:uppercase;letter-spacing:.055em;
+  padding:.16rem .46rem;
 }
 .pub .gist{grid-column:2;grid-row:2;font-size:.94rem;margin:0}
 .pub .links{
@@ -231,17 +249,17 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
     <p>I'm a third-year undergraduate at Xidian University (GPA <b>92.1/100</b>, rank <b>3/420</b>) and a research collaborator with the <a href="https://ai.comp.nus.edu.sg/">HPC-AI Lab</a> at the National University of Singapore. My recent work includes <b>DFPR</b> (ACM Multimedia 2026, <b>first student author</b>) and <b>RA-Bench</b> (first-listed co-first author).</p>
     <p>My entry point is evaluation: understanding where visual systems fail, building evidence that survives stress tests, and turning those failures into better learning signals. I now want to study geometry-grounded world models that remain consistent over long rollouts and useful for embodied agents.</p>
     <div class="proofline" aria-label="Selected research highlights">
-      <span class="proof"><b>ACM MM 2026</b> first student author</span>
+      <span class="proof primary"><b>ACM MM 2026</b> first student author</span>
       <span class="proof"><b>RA-Bench</b> first-listed co-first author</span>
       <span class="proof"><b>17,886</b> released video clips</span>
     </div>
   </section>
 
   <section class="sec">
-    <h2 class="sec-h">Selected news</h2>
+    <h2 class="sec-h sec-h-news"><span class="news-emoji" aria-hidden="true">📰</span><span>Selected news</span></h2>
     <ul class="rows">
       <li><span class="k">Aug 2026</span><span class="v2">RA-Bench went live with its dataset and toolkit, reaching #1 on Hugging Face Daily Papers.</span></li>
-      <li><span class="k">Jul 2026</span><span class="v2">DFPR was accepted to ACM Multimedia 2026; I am the paper's first student author.</span></li>
+      <li><span class="k">Jul 2026</span><span class="v2">DFPR was accepted to ACM Multimedia 2026; I am the paper's <b>first student author</b>.</span></li>
       <li><span class="k">2025</span><span class="v2">Received the National Scholarship from China's Ministry of Education.</span></li>
     </ul>
   </section>
@@ -270,7 +288,7 @@ a:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2
       <div class="pub-meta">
         <p class="t"><a href="https://openreview.net/forum?id=3ApAMVloY5">DFPR: Dynamic Fine-Grained Perceptive Bidirectional Image-Text Retrieval</a></p>
         <p class="a">Mengru Ma, <b>Shuo Liang</b>, Wenping Ma, Lingling Li, Xu Liu, Xu Cong</p>
-        <p class="v">ACM Multimedia 2026<span class="st">first student author · second-listed</span></p>
+        <p class="v"><span class="venue">ACM Multimedia 2026</span><span class="st lead-author">first student author</span></p>
         <p class="links"><a href="https://openreview.net/forum?id=3ApAMVloY5">OpenReview</a></p>
       </div>
       <p class="gist">DFPR is a parameter-efficient framework for remote-sensing image–text retrieval. It updates 6.79M parameters (4.49% of full fine-tuning) while improving mean recall over HarMA by 3.21, 1.87, and 2.94 points on RSITMD, RSICD, and UCM-Captions. As the <b>first student author</b>, I worked across the full research cycle—from problem and method formulation to implementation, experiments, rebuttal, and paper writing.</p>
