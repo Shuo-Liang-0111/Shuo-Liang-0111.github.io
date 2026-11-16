@@ -6,6 +6,8 @@
 
 ```
 index.html                  # 全部内容与样式都在这一个文件里
+*.woff2               # Shippori Mincho 与 Figtree 本地字体
+*-OFL.txt              # 字体许可证
 images/avatar.png           # 头像，页面裁成圆形显示
 images/paper-ra-bench-cover.webp  # RA-Bench 论文首页缩略图
 images/paper-dfpr-result.webp     # DFPR 结果图缩略图
@@ -31,9 +33,10 @@ files/Shuo_Liang_CV.pdf     # CV，页眉的 cv 链接指向这里
 ## 设计约定
 
 - 配色变量集中在 `:root` 里
-- 字体：系统无衬线字体优先，Inter 从 Google Fonts 加载作为回退
+- 字体：标题使用 Shippori Mincho，正文使用 Figtree；WOFF2 字体和许可证随站点保存，中文姓名使用单独的字形子集
 - 深浅色：默认跟随系统，右上角按钮切换，并在当前浏览器保存选择
-- 首尾使用动态点阵背景；减少动态效果的系统设置下显示静态背景
+- 首尾使用 WebGL 晚霞与流云背景，正文显示为暖色纸张；减少动态效果的系统设置下停止动画
+- 经历以细线连接，机构标志使用方形容器，并完整容纳纵向校徽
 - 青岛二中使用现有横版标志中的校徽部分，通过 CSS 容器显示，原始图片保持完整
 - 邮箱使用可直接点击的 `mailto:` 链接
 - **对外邮箱统一用 Gmail**：QQ 邮箱常被海外高校的邮件服务器过滤
@@ -47,6 +50,7 @@ files/Shuo_Liang_CV.pdf     # CV，页眉的 cv 链接指向这里
 
 ## 版式更新（2026-11-16）
 
-- 采用本人提供并确认的页面预览：大标题、动态点阵、论文卡片、机构标志和深浅色切换。
-- RA-Bench 状态简化为 `ICLR 2027 · Under review`。
+- 采用本人提供并确认的第二版预览：晚霞与流云、衬线大标题、论文卡片、经历时间线和深浅色切换。
+- 完整保留确认预览中的内容与交互；RA-Bench 标注为 `arXiv, 2026 · Submitted to ICLR 2027`。
+- 字体从 Google Fonts 官方来源获取并本地保存；图片和 CV 沿用已有资源。
 - 发布文件移除本地预览的 `noindex` 标记，并设置正式标题与 canonical 地址。
