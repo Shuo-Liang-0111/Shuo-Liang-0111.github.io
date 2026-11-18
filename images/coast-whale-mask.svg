@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1902" height="827" viewBox="0 0 1902 827">
+  <defs>
+    <filter id="feather" filterUnits="userSpaceOnUse" x="700" y="0" width="1060" height="580">
+      <feGaussianBlur stdDeviation="13"/>
+    </filter>
+  </defs>
+  <path fill="white" filter="url(#feather)"
+        d="M 776 115 Q 912 95 1050 131 L 1280 166 L 1390 106 L 1440 43
+           Q 1570 16 1706 102 L 1706 201 L 1510 231 L 1422 303 L 1310 351
+           L 1378 452 Q 1324 500 1246 463 L 1107 385 L 1026 431 L 965 504
+           Q 900 527 855 482 L 860 427 L 919 335 L 815 251 Q 761 203 776 115 Z"/>
+</svg>

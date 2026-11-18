@@ -377,6 +377,72 @@ a.xp-logo:hover{transform:scale(1.05)}
 /* Fit the existing wide school wordmark by showing its emblem in the logo tile. */
 .xp-logo.school-logo{position:relative}
 .xp-logo.school-logo img{position:absolute;left:6%;width:auto;max-width:none;height:88%;object-fit:initial}
+
+/* The painted coast sits in the lower part of the existing animated sky. */
+.coast-window {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 61% 54% at 13% 21%, #0002, #0005 46%, #000 100%);
+}
+.coast-plane {
+  --coast-image: url("images/evening-coast.webp");
+  position: absolute;
+  right: -1%;
+  bottom: -1px;
+  width: 102%;
+  width: max(102%, min(144svh, 114%));
+  aspect-ratio: 1902 / 827;
+  transform: translate3d(0, var(--coast-travel, 0px), 0);
+  mask-image: linear-gradient(to bottom, transparent, #0005 6%, #000c 13%, #000 21%);
+}
+.coast-plane picture, .coast-plane img { display: block; width: 100%; height: 100%; }
+[data-theme="dark"] .coast-plane { filter: brightness(.70) saturate(.83); }
+[data-theme="dark"] .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 65% 60% at 16% 47%, rgb(17 29 45 / .52), rgb(17 29 45 / .23) 58%, transparent);
+}
+
+/* Move the whale and the clear sky immediately around it as a single soft-edged layer. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (mask-image: url("images/coast-whale-mask.svg")) {
+    .coast-plane::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--coast-image) center / 100% 100% no-repeat;
+      mask: url("images/coast-whale-mask.svg") center / 100% 100% no-repeat;
+      transform-origin: 65% 32%;
+      animation: whale-float 6.8s ease-in-out -3.4s infinite alternate paused;
+    }
+    .coast-window.is-active .coast-plane::after { animation-play-state: running; }
+  }
+}
+@keyframes whale-float {
+  from { transform: translate3d(-.35%, 1.05%, 0) rotate(-.65deg); }
+  to { transform: translate3d(.45%, -1.5%, 0) rotate(.45deg); }
+}
+@media (min-width: 860px) and (min-aspect-ratio: 5/4) {
+  .coast-plane { width: 106.5%; right: -5.5%; bottom: -9svh; }
+}
+@media (min-aspect-ratio: 2/1) {
+  .coast-plane { width: 190svh; right: -1%; bottom: -6svh; }
+  .coast-window { mask-image: linear-gradient(90deg, transparent calc(100% - 187svh), #000 calc(100% - 155svh)); }
+}
+@media (max-width: 640px) {
+  .coast-plane { --coast-image: url("images/evening-coast-small.webp"); }
+}
+@media (max-width: 640px) and (orientation: portrait) {
+  .coast-window { mask-image: linear-gradient(to bottom, transparent 22%, #000 65%); }
+  .coast-plane { width: 185%; right: -9%; }
+}
+@media print { .coast-window, [data-theme="dark"] .hero::after { display: none; } }
 </style>
 </head>
 
@@ -404,6 +470,14 @@ a.xp-logo:hover{transform:scale(1.05)}
 
 <!-- ═════════ Hero ═════════ -->
 <header class="hero" id="top">
+  <div class="coast-window" aria-hidden="true">
+    <div class="coast-plane">
+      <picture>
+        <source media="(max-width: 640px)" srcset="images/evening-coast-small.webp">
+        <img src="images/evening-coast.webp" alt="" width="1902" height="827" fetchpriority="high">
+      </picture>
+    </div>
+  </div>
   <div class="wrap">
     <div class="hero-in">
       <img class="avatar" src="images/avatar.png" alt="Portrait of Shuo Liang" width="320" height="320">
@@ -765,6 +839,7 @@ void main(){
 
   /* ── Scroll: nav state, hero drift, which sky is showing, the thread, the statement ── */
   const nav = $('.nav'), drift = [$('.hero-in'), $('.cn')], sheet = $('.sheet');
+  const coast = $('.coast-window');
   const thread = $('.thread'), statement = $('.statement');
   const words = [];
   if (statement && !still) {
@@ -792,6 +867,8 @@ void main(){
     const open = clamp(Math.max(above, below), 0, 1);       // share of the viewport not under the sheet
     nav.classList.toggle('scrolled', y > 8);
     nav.classList.toggle('past', y > vh * 0.4);
+    coast.classList.toggle('is-active', !still && above > 0 && !document.hidden);
+    if (!still && above > 0) coast.style.setProperty('--coast-travel', Math.round(Math.max(0, y) * .27) + 'px');
     if (!still) {
       const p = clamp(y / vh, 0, 1);
       for (const el of drift) {
@@ -812,6 +889,7 @@ void main(){
   };
   window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   window.addEventListener('resize', onScroll);
+  document.addEventListener('visibilitychange', onScroll);
   onScroll();
 
   /* ── Light that follows the cursor across the paper cards ── */
