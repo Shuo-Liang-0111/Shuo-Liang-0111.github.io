@@ -286,6 +286,9 @@ a.xp-logo:hover{transform:scale(1.05)}
 .org{margin-top:2px;font-size:.9rem;color:var(--ink-2)}
 .xp-main p:not(.org){margin-top:10px;font-size:.97rem}
 .xp-main p.people{font-size:.875rem;color:var(--ink-2)}
+.academic-record{display:grid;grid-template-columns:minmax(0,1fr) max-content;gap:2px 1.5rem;width:fit-content;max-width:100%;margin-top:10px;font-size:.94rem;line-height:1.55}
+.academic-record dt{text-wrap:balance}
+.academic-record dd{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
 .when{padding-top:3px;text-align:right;font-size:.8125rem;line-height:1.55;color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
 .when b{display:block;font-weight:500;color:var(--ink)}
 
@@ -498,7 +501,7 @@ a.xp-logo:hover{transform:scale(1.05)}
 
   <!-- ═════════ Introduction ═════════ -->
   <section class="sec intro wrap" aria-label="Introduction">
-    <p class="lede" data-r>I'm a third-year undergraduate at <b>Xidian University</b> (GPA <b>93.8/100</b>), a research collaborator with the <a class="nb" href="https://ai.comp.nus.edu.sg/">HPC-AI Lab</a> at the National University of Singapore, and a remote algorithm research intern at <a href="https://www.cardinal-agi.com/">InfRec</a>. My recent work includes <b>DFPR</b> (ACM Multimedia 2026, <b>first student author</b>) and <b class="nb">RA-Bench</b> (first-listed co-first author).</p>
+    <p class="lede" data-r>I'm a third-year undergraduate at <b>Xidian University</b>, where I rank <a class="nb" href="#education">1st of 411</a> in my major with a GPA of <b>93.8/100</b>. I'm a research collaborator with the <a class="nb" href="https://ai.comp.nus.edu.sg/">HPC-AI Lab</a> at the National University of Singapore and a remote algorithm research intern at <a href="https://www.cardinal-agi.com/">InfRec</a>. My recent work includes <b>DFPR</b> (ACM Multimedia 2026, <b>first student author</b>) and <b class="nb">RA-Bench</b> (first-listed co-first author).</p>
     <p class="intro-body" data-r>My entry point is evaluation: understanding where visual systems fail, building evidence that survives stress tests, and turning those failures into better learning signals. I now want to study geometry-grounded world models that remain consistent over long rollouts and useful for embodied agents.</p>
     <dl class="facts" aria-label="Selected research highlights" data-r>
       <div><dt>ACM MM 2026</dt><dd>First student author</dd></div>
@@ -598,12 +601,17 @@ a.xp-logo:hover{transform:scale(1.05)}
         <p class="when"><b>Oct 2025–present</b>Xi'an, China</p>
       </article>
 
-      <article class="xp" data-r>
+      <article class="xp" id="education" data-r>
         <div class="xp-logo s"><img src="images/experience-xidian.png" alt="Xidian University" width="270" height="269" loading="lazy"></div>
         <div class="xp-main">
           <h3>B.Eng. in Electronic Information Engineering</h3>
           <p class="org">Xidian University · School of Electronic Engineering</p>
-          <p>GPA 93.8/100. Alongside coursework, I work with Chang Gao on OCDM waveform design for integrated sensing and communications; a manuscript is under review.</p>
+          <dl class="academic-record" aria-label="Academic standing at Xidian University">
+            <dt>GPA</dt><dd>93.8/100</dd>
+            <dt>Academic rank in major</dt><dd>1/411</dd>
+            <dt>Comprehensive assessment rank</dt><dd>7/411</dd>
+          </dl>
+          <p>Alongside coursework, I work with Chang Gao on OCDM waveform design for integrated sensing and communications. Our manuscript is under review.</p>
         </div>
         <p class="when"><b>Sep 2024–Jun 2028</b>expected</p>
       </article>
