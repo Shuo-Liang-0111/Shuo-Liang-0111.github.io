@@ -1,56 +1,41 @@
 # Shuo-Liang-0111.github.io
 
-个人学术主页。纯静态，零框架，零构建步骤。
+个人学术主页。纯静态单文件架构，零框架，零构建步骤。
 
 ## 结构
 
 ```
-index.html                  # 全部内容与样式都在这一个文件里
-*.woff2               # Shippori Mincho 与 Figtree 本地字体
-*-OFL.txt              # 字体许可证
-images/avatar.png           # 头像，页面裁成圆形显示
-images/paper-ra-bench-cover.webp  # RA-Bench 论文首页缩略图
-images/paper-dfpr-result.webp     # DFPR 结果图缩略图
-images/experience-*               # Experience 区域的学校/实验室标识
-images/experience-infrec.png       # InfRec / Cardinal AI 官网原版标识
-files/Shuo_Liang_CV.pdf     # CV，页眉的 cv 链接指向这里
-.nojekyll                   # 告诉 GitHub Pages 不要跑 Jekyll
+index.html                          # 全部结构、样式、交互与 JSON-LD 元数据
+robots.txt                          # 搜索引擎抓取规则
+sitemap.xml                         # 站点地图
+*.woff2                             # Shippori Mincho 与 Figtree 本地字体子集
+*-OFL.txt                           # 字体许可证
+images/avatar.webp                  # 压缩优化后的 320×320 头像（保留 avatar.png 兜底）
+images/evening-coast*.webp          # 桌面与移动端暮色海岸插画
+images/coast-whale-mask.svg         # 鲸鱼微动效遮罩
+images/paper-ra-bench-teaser.webp   # RA-Bench Figure 1 裁切主图
+images/paper-dfpr-result.webp       # DFPR 核心结果图
+images/experience-*                 # Experience 区域的机构与学校标识
+files/Shuo_Liang_CV.pdf             # 英文简历，页眉 CV 按钮指向这里
+.nojekyll                           # 禁用 GitHub Pages 默认 Jekyll 构建
 ```
 
 ## 部署
 
-仓库名必须是 `Shuo-Liang-0111.github.io`，然后 Settings → Pages → Source 选 `main` 分支根目录。
-几分钟后访问 https://shuo-liang-0111.github.io
+仓库名为 `Shuo-Liang-0111.github.io`，在 Settings → Pages → Source 选择 `main` 分支根目录即可自动发布至 <https://shuo-liang-0111.github.io/>。
 
-## 怎么改内容
+## 维护说明
 
-直接编辑 `index.html`，各个内容区块由对应的 `<section>` 标题区分。常见改动：
+直接编辑 `index.html` 中对应的语义区块即可：
 
-- **加一篇论文** — 复制 `<article class="paper">` 整块，改标题、作者、venue
-- **加一段经历** — 复制 `<article class="xp">` 整块，补充机构标识、职责、地点与日期
-- **换 CV** — 覆盖 `files/Shuo_Liang_CV.pdf` 即可，链接不用改
+- **新增论文** — 复制 `<article class="paper">` 并在脚本顶部 `BIBTEX` 对象中追加条目
+- **新增经历** — 复制 `<article class="xp">`，时间轴连线会自动按首尾机构图标中心对齐
+- **更新简历** — 覆盖 `files/Shuo_Liang_CV.pdf` 并同步更新 `sitemap.xml` 中的日期
 
-## 设计约定
+## 设计与工程约定
 
-- 配色变量集中在 `:root` 里
-- 字体：标题使用 Shippori Mincho，正文使用 Figtree；WOFF2 字体和许可证随站点保存，中文姓名使用单独的字形子集
-- 深浅色：默认跟随系统，右上角按钮切换，并在当前浏览器保存选择
-- 首尾使用 WebGL 晚霞与流云背景，正文显示为暖色纸张；减少动态效果的系统设置下停止动画
-- 经历以细线连接，机构标志使用方形容器，并完整容纳纵向校徽
-- 青岛二中使用现有横版标志中的校徽部分，通过 CSS 容器显示，原始图片保持完整
-- 邮箱使用可直接点击的 `mailto:` 链接
-- **对外邮箱统一用 Gmail**：QQ 邮箱常被海外高校的邮件服务器过滤
-- **发表署名统一用 Shuo Liang**，与 arXiv 一致，不要出现别的英文名
-
-## 本次更新来源（2026-10-16）
-
-- InfRec 实习：2026-10-14 开始，远程，算法研究与开发；日期和职责由本人提供。
-- 公司官网：[Cardinal AI](https://www.cardinal-agi.com/)。经历图片直接使用官网公开的 [InfRec 标识](https://www.cardinal-agi.com/prelogin/assets/infrec-logo.png)，保存为 `images/experience-infrec.png`，未修改标识。
-- RA-Bench 状态：`Submitted to ICLR 2027`，仅表示投稿。参照 [ICLR 2027 Author Guidelines](https://iclr.cc/Conferences/2027/AuthorGuidelines)：审稿期间允许 arXiv 预印本，投稿正文和补充材料仍须匿名；不要把投稿状态写成录用。
-
-## 版式更新（2026-11-16）
-
-- 采用本人提供并确认的第二版预览：晚霞与流云、衬线大标题、论文卡片、经历时间线和深浅色切换。
-- 完整保留确认预览中的内容与交互；RA-Bench 标注为 `arXiv, 2026 · Submitted to ICLR 2027`。
-- 字体从 Google Fonts 官方来源获取并本地保存；图片和 CV 沿用已有资源。
-- 发布文件移除本地预览的 `noindex` 标记，并设置正式标题与 canonical 地址。
+- **视觉母题**：保留「日落前 / 日落后」双主题 WebGL 暮色流云与海岸鲸鱼微视差；正文采用暖羊皮纸 / 暖深咖质感，暗色模式下配图与机构标识使用柔和暖米白衬底。
+- **排版与文案**：标题使用 `Shippori Mincho`，正文使用 `Figtree`；文案按学术审稿标准去冗余，拆分 `Papers`（科学问题、规模、核心发现与指标）与 `Experience`（角色分工、工程实现与合作关系）的职责。
+- **交互细节**：顶部滑动胶囊导航 + 阅读进度细线、移动端毛玻璃目录抽屉、论文配图弹性 Lightbox 放大查看、`BibTeX` 与邮箱一键复制（带悬浮 Toast 反馈）、外链新标签页打开与轻量箭头位移，并完整兼容 `prefers-reduced-motion`。
+- **检索与性能**：内嵌 `JSON-LD`（`Person` + `ScholarlyArticle`）及 Open Graph / Twitter Card 元数据；头像以 `avatar.webp`（约 11 KB）替代近 2 MB 原图，首屏更轻快。
+- **署名与联络**：对外邮箱统一使用 Gmail（`liangshuo0111@gmail.com`），发表署名统一使用 `Shuo Liang`；`RA-Bench` 审稿期间标注为 `Submitted to ICLR 2027`。
